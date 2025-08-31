@@ -1,7 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2, User, Phone, BookOpen, Gamepad2, CreditCard } from 'lucide-react';
+import { ExternalLink, User, Phone, BookOpen, Gamepad2, FileText } from 'lucide-react';
 
 import {
   Dialog,
@@ -12,62 +10,41 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 
-import { gameRegistrationSchema, type GameRegistrationFormData } from '@/lib/validations';
-import { type GameRegistration, type GameRegistrationFormProps } from '@/types/registration';
-import { formatAmount } from '@/lib/payment';
-import { isEarlyBird, calculatePrice } from '@/lib/constants';
+import { GOOGLE_FORMS } from '@/lib/constants';
+
+interface GameRegistrationFormProps {
+  gameId: string;
+  gameName: string;
+  onClose: () => void;
+}
 
 const GameRegistrationForm: React.FC<GameRegistrationFormProps> = ({
   gameId,
   gameName,
-  onSubmit,
-  onClose,
-  isLoading = false
+  onClose
 }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset
-  } = useForm<GameRegistrationFormData>({
-    resolver: zodResolver(gameRegistrationSchema),
-    defaultValues: {
-      name: '',
-      phone: '',
-      prn: '',
-      gameId: gameId
-    }
-  });
-
-  const price = calculatePrice(1); // Single game price
-  const showEarlyBird = isEarlyBird();
-
-  const handleFormSubmit = async (data: GameRegistrationFormData) => {
-    try {
-      const gameRegistrationData: GameRegistration = {
-        name: data.name,
-        phone: data.phone,
-        prn: data.prn,
-        gameId: data.gameId
-      };
-      await onSubmit(gameRegistrationData);
-      reset();
-    } catch (error) {
-      console.error('Game registration form submission error:', error);
-    }
+  const getGameFormUrl = (gameId: string): string => {
+    // Map gameId to Google Form URLs
+    const gameFormMap: Record<string, string> = {
+      'game1': GOOGLE_FORMS.gameRegistrations.game1,
+      'game2': GOOGLE_FORMS.gameRegistrations.game2,
+      'game3': GOOGLE_FORMS.gameRegistrations.game3,
+      'game4': GOOGLE_FORMS.gameRegistrations.game4,
+    };
+    
+    return gameFormMap[gameId] || GOOGLE_FORMS.gameRegistrations.game1;
   };
 
-  const handleClose = () => {
-    reset();
+  const handleRegister = () => {
+    const formUrl = getGameFormUrl(gameId);
+    window.open(formUrl, '_blank');
     onClose();
   };
 
   return (
-    <Dialog open={true} onOpenChange={handleClose}>
+    <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[480px] bg-shadow-dark border-classified-gold/30">
         <DialogHeader>
           <DialogTitle className="text-2xl font-classified text-classified-gold flex items-center gap-2">
@@ -76,126 +53,71 @@ const GameRegistrationForm: React.FC<GameRegistrationFormProps> = ({
           </DialogTitle>
           <DialogDescription className="text-gray-300 font-intel">
             Join <span className="text-classified-gold font-semibold">{gameName}</span> operation. 
-            Quick registration for immediate deployment.
+            Quick registration via secure form.
           </DialogDescription>
         </DialogHeader>
 
-        {/* Game Info & Pricing */}
+        {/* Game Info */}
         <div className="bg-black/20 border border-classified-gold/20 rounded-lg p-4 mb-4">
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-classified text-classified-gold">{gameName}</h4>
               <p className="text-sm text-gray-400 font-intel">Single mission registration</p>
             </div>
-            <div className="text-right">
-              <div className="flex items-center gap-2">
-                <Badge variant="outline" className="bg-classified-gold/10 text-classified-gold border-classified-gold/30">
-                  {formatAmount(price)}
-                </Badge>
-                {showEarlyBird && (
-                  <Badge variant="outline" className="bg-intel-green/10 text-intel-green border-intel-green/30">
-                    Early Bird
-                  </Badge>
-                )}
-              </div>
-              {showEarlyBird && (
-                <p className="text-xs text-intel-green font-intel mt-1">
-                  ₹100 off applied!
-                </p>
-              )}
-            </div>
+            <Badge variant="outline" className="bg-classified-gold/10 text-classified-gold border-classified-gold/30">
+              Free Registration
+            </Badge>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-5">
-          {/* Name Field */}
-          <div className="space-y-2">
-            <Label htmlFor="name" className="text-classified-gold font-intel flex items-center gap-2">
-              <User className="h-4 w-4" />
-              Full Name
-            </Label>
-            <Input
-              id="name"
-              {...register('name')}
-              placeholder="Enter your full name"
-              className="bg-black/20 border-classified-gold/30 text-white placeholder:text-gray-400 focus:border-classified-gold"
-              disabled={isLoading || isSubmitting}
-            />
-            {errors.name && (
-              <p className="text-sm text-alert-red">{errors.name.message}</p>
-            )}
-          </div>
-
-          {/* Phone Field */}
-          <div className="space-y-2">
-            <Label htmlFor="phone" className="text-classified-gold font-intel flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              Phone Number
-            </Label>
-            <Input
-              id="phone"
-              {...register('phone')}
-              placeholder="Enter 10-digit mobile number"
-              maxLength={10}
-              className="bg-black/20 border-classified-gold/30 text-white placeholder:text-gray-400 focus:border-classified-gold"
-              disabled={isLoading || isSubmitting}
-            />
-            {errors.phone && (
-              <p className="text-sm text-alert-red">{errors.phone.message}</p>
-            )}
-          </div>
-
-          {/* PRN Field */}
-          <div className="space-y-2">
-            <Label htmlFor="prn" className="text-classified-gold font-intel flex items-center gap-2">
-              <BookOpen className="h-4 w-4" />
-              PRN (Personal Registration Number)
-            </Label>
-            <Input
-              id="prn"
-              {...register('prn')}
-              placeholder="Enter your PRN"
-              className="bg-black/20 border-classified-gold/30 text-white placeholder:text-gray-400 focus:border-classified-gold"
-              disabled={isLoading || isSubmitting}
-            />
-            {errors.prn && (
-              <p className="text-sm text-alert-red">{errors.prn.message}</p>
-            )}
-          </div>
-
-          {/* Payment Info */}
-          <div className="bg-black/10 border border-classified-gold/10 rounded-lg p-3">
-            <div className="flex items-center gap-2 text-classified-gold text-sm font-intel">
-              <CreditCard className="h-4 w-4" />
-              <span>Secure payment processing via Razorpay</span>
+        {/* Registration Info */}
+        <div className="space-y-4">
+          <div className="bg-black/10 border border-classified-gold/10 rounded-lg p-4">
+            <div className="flex items-center gap-2 text-classified-gold text-sm font-intel mb-2">
+              <FileText className="h-4 w-4" />
+              <span>Registration Process</span>
             </div>
-            <p className="text-xs text-gray-400 mt-1 font-intel">
-              You will be redirected to payment gateway after registration
+            <div className="space-y-2 text-sm text-gray-300 font-intel">
+              <div className="flex items-center gap-2">
+                <User className="h-3 w-3" />
+                <span>Full Name</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="h-3 w-3" />
+                <span>Phone Number</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <BookOpen className="h-3 w-3" />
+                <span>PRN (Personal Registration Number)</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-intel-green/10 border border-intel-green/20 rounded-lg p-3">
+            <p className="text-intel-green text-sm font-intel">
+              🎯 You'll be redirected to a secure Google Form for quick registration.
+              All submissions are automatically recorded.
             </p>
           </div>
+        </div>
 
-          <DialogFooter className="flex gap-3">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleClose}
-              disabled={isLoading || isSubmitting}
-              className="border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10"
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              disabled={isLoading || isSubmitting}
-              className="bg-classified-gold hover:bg-warning-amber text-black font-classified"
-            >
-              {(isLoading || isSubmitting) && (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              )}
-              Proceed to Payment {formatAmount(price)}
-            </Button>
-          </DialogFooter>
-        </form>
+        <DialogFooter className="flex gap-3">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onClose}
+            className="border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleRegister}
+            className="bg-classified-gold hover:bg-warning-amber text-black font-classified"
+          >
+            <ExternalLink className="mr-2 h-4 w-4" />
+            Register Now
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

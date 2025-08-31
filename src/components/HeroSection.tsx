@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import MainRegistrationForm from "@/components/forms/MainRegistrationForm";
-import { useRegistration } from "@/hooks/useRegistration";
-import { useToast } from "@/hooks/use-toast";
-import type { MainRegistration } from "@/types/registration";
 import heroBackground from "@/assets/hero-battlefield.jpg";
 
 const Navbar = () => {
@@ -42,34 +39,13 @@ const Navbar = () => {
 
 const HeroSection = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
-  const { submitMainRegistration, isLoading, error, clearError } = useRegistration();
-  const { toast } = useToast();
 
   const handleRegistrationClick = () => {
     setShowRegistrationForm(true);
   };
 
-  const handleRegistrationSubmit = async (data: MainRegistration) => {
-    try {
-      await submitMainRegistration(data);
-      setShowRegistrationForm(false);
-      toast({
-        title: "Registration Successful!",
-        description: "Your mission registration has been confirmed. Check your email for further instructions.",
-        variant: "default",
-      });
-    } catch (error) {
-      toast({
-        title: "Registration Failed",
-        description: error instanceof Error ? error.message : "An error occurred during registration.",
-        variant: "destructive",
-      });
-    }
-  };
-
   const handleRegistrationClose = () => {
     setShowRegistrationForm(false);
-    clearError();
   };
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -138,7 +114,6 @@ const HeroSection = () => {
               variant="hero" 
               size="lg"
               onClick={handleRegistrationClick}
-              disabled={isLoading}
               className="bg-classified-gold hover:bg-primary text-background font-classified text-base px-6 py-3 shadow-classified transition-all hover:scale-105"
             >
               REGISTER NOW
@@ -162,9 +137,7 @@ const HeroSection = () => {
       {/* Registration Form Modal */}
       {showRegistrationForm && (
         <MainRegistrationForm
-          onSubmit={handleRegistrationSubmit}
           onClose={handleRegistrationClose}
-          isLoading={isLoading}
         />
       )}
     </section>

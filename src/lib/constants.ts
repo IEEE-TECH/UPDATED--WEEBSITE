@@ -10,22 +10,15 @@ export const APP_CONFIG = {
   supportPhone: '+91-XXXXXXXXXX'
 };
 
-// Payment configuration
-export const PAYMENT_CONFIG = {
-  currency: 'INR',
-  gateway: 'razorpay',
-  theme: {
-    color: '#D4AF37' // Classified gold color
+// Google Forms URLs for registrations
+export const GOOGLE_FORMS = {
+  mainRegistration: 'https://forms.google.com/your-main-registration-form',
+  gameRegistrations: {
+    game1: 'https://forms.google.com/your-game1-form',
+    game2: 'https://forms.google.com/your-game2-form', 
+    game3: 'https://forms.google.com/your-game3-form',
+    game4: 'https://forms.google.com/your-game4-form'
   }
-};
-
-// Game pricing and packages
-export const GAME_PRICING = {
-  individual: 299,
-  combo2: 499,    // 2 games
-  combo3: 699,    // 3 games  
-  allGames: 899,  // All 4 games
-  earlyBirdDiscount: 100
 };
 
 // Registration status constants
@@ -33,15 +26,6 @@ export const REGISTRATION_STATUS = {
   OPEN: 'open',
   CLOSED: 'closed',
   EARLY_BIRD: 'early_bird'
-} as const;
-
-// Payment status constants
-export const PAYMENT_STATUS = {
-  PENDING: 'pending',
-  PROCESSING: 'processing',
-  SUCCESS: 'success',
-  FAILED: 'failed',
-  CANCELLED: 'cancelled'
 } as const;
 
 // Form field limits
@@ -62,16 +46,13 @@ export const ERROR_MESSAGES = {
   duplicateEmail: 'Email is already registered',
   duplicatePRN: 'PRN is already registered',
   networkError: 'Network error. Please check your connection.',
-  paymentFailed: 'Payment failed. Please try again.',
   registrationClosed: 'Registration is currently closed',
   serverError: 'Server error. Please try again later.'
 };
 
 // Success messages
 export const SUCCESS_MESSAGES = {
-  registrationSuccess: 'Registration successful!',
-  paymentSuccess: 'Payment completed successfully!',
-  emailSent: 'Confirmation email sent successfully!'
+  registrationSuccess: 'Registration successful!'
 };
 
 // Date utility functions
@@ -97,57 +78,14 @@ export const getRegistrationStatus = (): string => {
   return REGISTRATION_STATUS.OPEN;
 };
 
-// Calculate pricing based on game count and early bird status
-export const calculatePrice = (gameCount: number): number => {
-  let basePrice: number;
-  
-  switch (gameCount) {
-    case 1:
-      basePrice = GAME_PRICING.individual;
-      break;
-    case 2:
-      basePrice = GAME_PRICING.combo2;
-      break;
-    case 3:
-      basePrice = GAME_PRICING.combo3;
-      break;
-    case 4:
-      basePrice = GAME_PRICING.allGames;
-      break;
-    default:
-      basePrice = GAME_PRICING.individual * gameCount;
-  }
-  
-  // Apply early bird discount
-  if (isEarlyBird()) {
-    return Math.max(0, basePrice - GAME_PRICING.earlyBirdDiscount);
-  }
-  
-  return basePrice;
-};
-
 // Environment variables with defaults
 export const ENV = {
-  SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL || '',
-  SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_ANON_KEY || '',
-  RAZORPAY_KEY_ID: import.meta.env.VITE_RAZORPAY_KEY_ID || '',
   APP_ENV: import.meta.env.MODE || 'development'
 };
 
-// Validate environment variables
+// Validate environment variables  
 export const validateEnv = (): boolean => {
-  const requiredVars = [
-    'VITE_SUPABASE_URL',
-    'VITE_SUPABASE_ANON_KEY',
-    'VITE_RAZORPAY_KEY_ID'
-  ];
-  
-  for (const varName of requiredVars) {
-    if (!import.meta.env[varName]) {
-      console.error(`Missing environment variable: ${varName}`);
-      return false;
-    }
-  }
-  
+  // No required environment variables for frontend-only mode
+  console.log('Frontend-only mode - no environment validation required');
   return true;
 };

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import GameRegistrationForm from "@/components/forms/GameRegistrationForm";
 import { 
   Radio, 
   MessageSquare, 
@@ -90,6 +92,15 @@ const getDifficultyColor = (difficulty: string) => {
 };
 
 const GamesHub = () => {
+  const [selectedGame, setSelectedGame] = useState<{ id: string; name: string } | null>(null);
+
+  const handleGameRegistration = (gameId: string, gameName: string) => {
+    setSelectedGame({ id: gameId, name: gameName });
+  };
+
+  const handleCloseRegistration = () => {
+    setSelectedGame(null);
+  };
   return (
     <section id="events" className="py-12 bg-muted/10"
 >
@@ -162,6 +173,7 @@ const GamesHub = () => {
                   variant="outline"
                   size="sm"
                   disabled={event.status === "LOCKED"}
+                  onClick={() => event.status === "AVAILABLE" && handleGameRegistration(`game${event.eventNumber}`, event.title)}
                 >
                   {event.status === "LOCKED" ? (
                     <>
@@ -192,6 +204,15 @@ const GamesHub = () => {
             </p>
           </div>
         </div>
+
+        {/* Game Registration Modal */}
+        {selectedGame && (
+          <GameRegistrationForm
+            gameId={selectedGame.id}
+            gameName={selectedGame.name}
+            onClose={handleCloseRegistration}
+          />
+        )}
       </div>
     </section>
   );
