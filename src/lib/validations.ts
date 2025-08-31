@@ -60,15 +60,15 @@ export const gameRegistrationSchema = z.object({
     .min(1, 'Game selection is required')
 });
 
-// Custom validation functions
+// Custom validation functions (frontend-only - no backend validation needed)
 export const validatePRNUnique = async (prn: string): Promise<boolean> => {
-  // This will be implemented when we add Supabase integration
-  // For now, return true
+  // Frontend-only mode - validation handled by Google Forms
   return true;
 };
 
 export const validateEmailUnique = async (email: string): Promise<boolean> => {
-  // This will be implemented when we add Supabase integration
+  // Frontend-only mode - validation handled by Google Forms
+  return true;
   // For now, return true
   return true;
 };
