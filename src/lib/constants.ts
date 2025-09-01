@@ -1,12 +1,12 @@
 // App configuration constants
 export const APP_CONFIG = {
-  name: 'TECHNOPEDIA 14',
+  name: 'TECHOPEDIA 14',
   title: 'Trinity Veil: The Final Confluence',
   eventDate: '2025-09-17',
   registrationEndDate: '2025-09-19',
   earlyBirdEndDate: '2025-09-10',
-  organizerName: 'TECHNOPEDIA 14',
-  supportEmail: 'support@technopedia14.com',
+  organizerName: 'TECHOPEDIA 14',
+  supportEmail: 'support@techopedia14.com',
   supportPhone: '+91-XXXXXXXXXX'
 };
 
