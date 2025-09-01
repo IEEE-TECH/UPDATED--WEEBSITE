@@ -102,22 +102,21 @@ const GamesHub = () => {
     setSelectedGame(null);
   };
   return (
-    <section id="events" className="py-12 bg-muted/10"
->
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="events" className="py-16 md:py-20 lg:py-24 bg-muted/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-classified text-classified-gold mb-3">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-classified text-classified-gold mb-3">
             OPERATION TRINITY VEIL
           </h2>
-          <p className="text-base font-intel text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base font-intel text-muted-foreground max-w-2xl mx-auto px-2">
             Four classified events. Each builds toward the final revelation. You will not see the full picture.
           </p>
-          <div className="w-24 h-1 bg-classified-gold mx-auto mt-3" />
+          <div className="w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-3" />
         </div>
 
         {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {trinityEvents.map((event, index) => (
             <Card 
               key={index}
@@ -192,13 +191,13 @@ const GamesHub = () => {
         </div>
 
         {/* Warning */}
-        <div className="text-center mt-8">
-          <div className="max-w-2xl mx-auto bg-alert-red/10 border border-alert-red/30 rounded-lg p-4">
+        <div className="text-center mt-8 md:mt-12">
+          <div className="max-w-2xl mx-auto bg-alert-red/10 border border-alert-red/30 rounded-lg p-4 md:p-6">
             <div className="flex items-center justify-center gap-2 mb-2">
               <AlertTriangle className="h-4 w-4 text-alert-red" />
               <span className="font-classified text-alert-red text-sm">MORAL IMPLICATIONS WARNING</span>
             </div>
-            <p className="text-xs font-intel text-muted-foreground leading-relaxed">
+            <p className="text-xs md:text-sm font-intel text-muted-foreground leading-relaxed px-2">
               By participating in Operation Trinity Veil, you acknowledge that your actions may have unforeseen consequences. 
               The true nature of your mission will only be revealed upon completion of all events.
             </p>

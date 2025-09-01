@@ -56,39 +56,39 @@ const getCategoryIcon = (category: string) => {
 
 const FAQSection = () => {
   return (
-    <section id="briefing" className="py-12 bg-background">
-      <div className="max-w-4xl mx-auto px-4">
+    <section id="briefing" className="py-16 md:py-20 lg:py-24 bg-background">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-classified text-classified-gold mb-3">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-classified text-classified-gold mb-3 md:mb-4">
             CLASSIFIED BRIEFING
           </h2>
-          <p className="text-base font-intel text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg font-intel text-muted-foreground max-w-2xl mx-auto px-2">
             Need-to-know basis information about Operation Trinity Veil
           </p>
-          <div className="w-24 h-1 bg-classified-gold mx-auto mt-3" />
+          <div className="w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-3 md:mt-4" />
         </div>
 
         {/* FAQ Accordion */}
-        <div className="space-y-3">
-          <Accordion type="single" collapsible className="space-y-3">
+        <div className="space-y-2 md:space-y-3">
+          <Accordion type="single" collapsible className="space-y-2 md:space-y-3">
             {faqData.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-4 py-1 hover:bg-card/70 transition-colors shadow-classified"
+                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-3 md:px-4 py-2 md:py-3 hover:bg-card/70 transition-colors shadow-classified"
               >
                 <AccordionTrigger className="text-left hover:no-underline hover:text-classified-gold transition-colors group">
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg">{getCategoryIcon(faq.category)}</span>
-                    <span className="font-classified text-sm group-hover:text-classified-gold transition-colors">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <span className="text-base md:text-lg">{getCategoryIcon(faq.category)}</span>
+                    <span className="font-classified text-sm md:text-base group-hover:text-classified-gold transition-colors">
                       {faq.question}
                     </span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="pt-2 pb-1">
-                  <div className="pl-8">
-                    <p className="font-intel text-muted-foreground leading-relaxed text-sm">
+                <AccordionContent className="pt-2 pb-2 md:pb-1">
+                  <div className="pl-6 md:pl-8">
+                    <p className="font-intel text-muted-foreground leading-relaxed text-sm md:text-base">
                       {faq.answer}
                     </p>
                   </div>
@@ -99,18 +99,18 @@ const FAQSection = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="mt-8 text-center bg-muted/20 rounded-lg p-6 border border-border/30">
-          <h3 className="text-xl font-classified text-foreground mb-3">
+        <div className="mt-8 md:mt-12 text-center bg-muted/20 rounded-lg p-4 md:p-6 border border-border/30">
+          <h3 className="text-lg md:text-xl font-classified text-foreground mb-2 md:mb-3">
             Require Additional Clearance?
           </h3>
-          <p className="font-intel text-muted-foreground mb-4 text-sm">
+          <p className="font-intel text-muted-foreground mb-3 md:mb-4 text-sm md:text-base">
             Command center stands ready to provide additional classified information.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button className="bg-classified-gold hover:bg-primary text-background font-classified px-4 py-2 rounded-lg shadow-classified hover:shadow-golden transition-all hover:scale-105 text-sm">
+            <button className="bg-classified-gold hover:bg-primary text-background font-classified px-4 md:px-6 py-2 md:py-3 rounded-lg shadow-classified hover:shadow-golden transition-all hover:scale-105 text-sm md:text-base">
               REQUEST CLEARANCE
             </button>
-            <button className="border border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10 font-classified px-4 py-2 rounded-lg transition-all hover:scale-105 text-sm">
+            <button className="border border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10 font-classified px-4 md:px-6 py-2 md:py-3 rounded-lg transition-all hover:scale-105 text-sm md:text-base">
               SECURE CHANNEL
             </button>
           </div>

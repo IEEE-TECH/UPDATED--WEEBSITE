@@ -62,33 +62,33 @@ const TimelineSection = () => {
 
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-classified text-classified-gold mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-classified text-classified-gold mb-3 md:mb-4">
             OPERATION TIMELINE
           </h2>
-          <p className="text-lg font-intel text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg font-intel text-muted-foreground max-w-2xl mx-auto px-2">
             Key dates for Trinity Veil operation deployment and personnel clearance
           </p>
-          <div className="w-24 h-1 bg-classified-gold mx-auto mt-4" />
+          <div className="w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-3 md:mt-4" />
         </div>
 
         {/* Vertical Timeline Container */}
         <div className="relative max-w-2xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-1 bg-muted" />
+          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-1 bg-muted" />
 
           {/* Timeline Events */}
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {timelineEvents.map((event, index) => (
               <div
                 key={index}
-                className="relative flex items-start gap-8 cursor-pointer group"
+                className="relative flex items-start gap-4 md:gap-8 cursor-pointer group"
                 onMouseEnter={() => setSelectedEvent(event)}
                 onMouseLeave={() => setSelectedEvent(null)}
               >
                 {/* Event Marker */}
                 <div className={`
-                  w-6 h-6 rounded-full border-4 border-background z-10 mt-2
+                  w-5 h-5 md:w-6 md:h-6 rounded-full border-4 border-background z-10 mt-2
                   ${getCategoryColor(event.category)}
                   transition-combat group-hover:scale-125
                   shadow-military
@@ -96,7 +96,7 @@ const TimelineSection = () => {
 
                 {/* Event Content */}
                 <div className="flex-1 transform group-hover:scale-105 transition-combat">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-6 hover:bg-card/70 transition-colors">
+                  <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-4 md:p-6 hover:bg-card/70 transition-colors">
                     <div className="flex items-start justify-between mb-2">
                       <div>
                         <div className="text-sm font-mono-classified text-classified-gold font-bold mb-1">
@@ -130,18 +130,18 @@ const TimelineSection = () => {
         </div>
 
         {/* Legend */}
-        <div className="flex flex-wrap justify-center gap-6 mt-16">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-12 md:mt-16">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-alert-red" />
-            <span className="text-sm font-mono-classified text-muted-foreground">Critical Events</span>
+            <span className="text-xs md:text-sm font-mono-classified text-muted-foreground">Critical Events</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-warning-amber" />
-            <span className="text-sm font-mono-classified text-muted-foreground">Operations</span>
+            <span className="text-xs md:text-sm font-mono-classified text-muted-foreground">Operations</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-classified-gold" />
-            <span className="text-sm font-mono-classified text-muted-foreground">Milestones</span>
+            <span className="text-xs md:text-sm font-mono-classified text-muted-foreground">Milestones</span>
           </div>
         </div>
       </div>
