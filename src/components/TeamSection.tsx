@@ -185,12 +185,12 @@ const TeamSection = () => {
           } else {
             // Normal scroll
             scrollContainerRef.current.scrollTo({
-              left: scrollLeft + 2, // Slow continuous scroll
+              left: scrollLeft + 4, // Faster continuous scroll
               behavior: 'smooth'
             });
           }
         }
-      }, 50); // Adjust speed here (lower = faster)
+      }, 30); // Faster speed (lower = faster)
     }
 
     return () => {
