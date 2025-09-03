@@ -1,16 +1,30 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import MainRegistrationForm from "@/components/forms/MainRegistrationForm";
 import heroBackground from "@/assets/hero-battlefield.jpg";
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className="absolute top-0 left-0 right-0 z-20 bg-background/95 backdrop-blur-sm border-b border-border/50">
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <div className="font-classified text-lg md:text-xl text-classified-gold">
             TECHOPEDIA 14
           </div>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#timeline" className="font-classified text-foreground hover:text-classified-gold transition-colors">
               TIMELINE
@@ -28,10 +42,78 @@ const Navbar = () => {
               BRIEFING
             </a>
           </div>
-          <Button variant="outline" size="sm" className="font-classified border-classified-gold text-classified-gold hover:bg-classified-gold hover:text-background">
+
+          {/* Desktop Button */}
+          <Button variant="outline" size="sm" className="hidden md:flex font-classified border-classified-gold text-classified-gold hover:bg-classified-gold hover:text-background">
             ACCESS CLEARANCE
           </Button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-classified-gold" />
+            ) : (
+              <Menu className="h-6 w-6 text-classified-gold" />
+            )}
+          </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-border/30">
+            <div className="flex flex-col space-y-4 pt-4">
+              <a
+                href="#timeline"
+                onClick={closeMobileMenu}
+                className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
+              >
+                TIMELINE
+              </a>
+              <a
+                href="#events"
+                onClick={closeMobileMenu}
+                className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
+              >
+                EVENTS
+              </a>
+              <a
+                href="#team"
+                onClick={closeMobileMenu}
+                className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
+              >
+                TEAM
+              </a>
+              <a
+                href="#sponsors"
+                onClick={closeMobileMenu}
+                className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
+              >
+                SPONSORS
+              </a>
+              <a
+                href="#briefing"
+                onClick={closeMobileMenu}
+                className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
+              >
+                BRIEFING
+              </a>
+              <div className="pt-2 border-t border-border/30">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full font-classified border-classified-gold text-classified-gold hover:bg-classified-gold hover:text-background"
+                  onClick={closeMobileMenu}
+                >
+                  ACCESS CLEARANCE
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
