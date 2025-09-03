@@ -106,11 +106,11 @@ const FAQSection = () => {
           <p className="font-intel text-muted-foreground mb-3 md:mb-4 text-sm md:text-base">
             Command center stands ready to provide additional classified information.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button className="bg-classified-gold hover:bg-primary text-background font-classified px-4 md:px-6 py-2 md:py-3 rounded-lg shadow-classified hover:shadow-golden transition-all hover:scale-105 text-sm md:text-base">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
+            <button className="bg-classified-gold hover:bg-primary text-background font-classified px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg shadow-classified hover:shadow-golden transition-all hover:scale-105 text-xs sm:text-sm md:text-base">
               REQUEST CLEARANCE
             </button>
-            <button className="border border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10 font-classified px-4 md:px-6 py-2 md:py-3 rounded-lg transition-all hover:scale-105 text-sm md:text-base">
+            <button className="border border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10 font-classified px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg transition-all hover:scale-105 text-xs sm:text-sm md:text-base">
               SECURE CHANNEL
             </button>
           </div>

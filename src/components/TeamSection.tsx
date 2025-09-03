@@ -212,7 +212,7 @@ const TeamSection = () => {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 280; // Adjusted for new card width + gap
+      const scrollAmount = window.innerWidth < 768 ? 240 : 280; // Smaller scroll on mobile
       const currentScroll = scrollContainerRef.current.scrollLeft;
       const targetScroll = direction === 'left' 
         ? currentScroll - scrollAmount 
@@ -232,14 +232,14 @@ const TeamSection = () => {
   return (
     <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-shadow-dark to-black">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-classified font-bold mb-4 md:mb-6 text-classified-gold tracking-wider">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-classified font-bold mb-3 sm:mb-4 md:mb-6 text-classified-gold tracking-wider">
             Command Structure
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-intel px-2">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-intel px-2">
             Elite command team leading IEEE operations and strategic initiatives
           </p>
-          <div className="w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-4 md:mt-6"></div>
+          <div className="w-20 sm:w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-3 sm:mt-4 md:mt-6"></div>
         </div>
 
         {/* Team Cards Container */}
@@ -294,10 +294,10 @@ const TeamSection = () => {
             {[...teamMembers, ...teamMembers].map((member, index) => (
               <div
                 key={`${member.name}-${index}`}
-                className="flex-shrink-0 w-72 md:w-80 group cursor-pointer"
+                className="flex-shrink-0 w-64 sm:w-72 md:w-80 group cursor-pointer"
               >
                 <div className={`
-                  ${member.bgColor} text-black rounded-xl p-4 md:p-6 h-40 md:h-48 
+                  ${member.bgColor} text-black rounded-xl p-3 sm:p-4 md:p-6 h-36 sm:h-40 md:h-48 
                   shadow-2xl hover:shadow-classified transition-all duration-500 
                   hover:scale-105 hover:-translate-y-2 relative overflow-hidden
                 `}>
@@ -311,17 +311,17 @@ const TeamSection = () => {
                   <div className="relative z-10 h-full flex flex-col justify-between">
                     {/* Avatar and Name */}
                     <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 md:w-16 md:h-16 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-black/30">
-                          <span className="text-sm md:text-lg font-classified text-black">
+                      <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-black/30">
+                          <span className="text-xs sm:text-sm md:text-lg font-classified text-black">
                             {member.avatar}
                           </span>
                         </div>
-                        <div>
-                          <h3 className="text-lg md:text-xl font-classified text-black mb-1 group-hover:scale-105 transition-transform">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-classified text-black mb-1 group-hover:scale-105 transition-transform leading-tight">
                             {member.name}
                           </h3>
-                          <p className="text-xs md:text-sm font-intel text-black/80 opacity-90">
+                          <p className="text-xs sm:text-sm font-intel text-black/80 opacity-90 leading-tight">
                             {member.department}
                           </p>
                         </div>
@@ -330,8 +330,8 @@ const TeamSection = () => {
 
                     {/* Role */}
                     <div className="text-right">
-                      <div className="inline-block bg-black/20 backdrop-blur-sm px-3 md:px-4 py-1 md:py-2 rounded-lg border border-black/30">
-                        <span className="text-sm md:text-lg font-classified text-black">
+                      <div className="inline-block bg-black/20 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-lg border border-black/30">
+                        <span className="text-xs sm:text-sm md:text-base lg:text-lg font-classified text-black leading-tight">
                           {member.role}
                         </span>
                       </div>

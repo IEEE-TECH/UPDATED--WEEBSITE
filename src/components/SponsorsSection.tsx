@@ -52,14 +52,14 @@ const SponsorsSection = () => {
     <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-shadow-dark to-black">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-classified font-bold mb-4 md:mb-6 text-classified-gold tracking-wider">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-classified font-bold mb-3 sm:mb-4 md:mb-6 text-classified-gold tracking-wider">
             Strategic Partners
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-intel px-2">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-intel px-2">
             Elite organizations supporting classified operations and intelligence gathering
           </p>
-          <div className="w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-4 md:mt-6"></div>
+          <div className="w-20 sm:w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-3 sm:mt-4 md:mt-6"></div>
         </div>
 
         {/* Coming Soon Display */}
@@ -80,21 +80,21 @@ const SponsorsSection = () => {
             </div>
 
             {/* Partnership Tiers Preview */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-6 sm:mt-8 md:mt-12">
               {sponsorTiers.map((tier, index) => (
                 <Card 
                   key={index}
                   className="group bg-shadow-dark/30 backdrop-blur-sm border border-classified-gold/10 overflow-hidden hover:border-classified-gold/30 transition-all duration-500"
                 >
-                  <div className="p-4 md:p-6 text-center space-y-3 md:space-y-4">
+                  <div className="p-3 sm:p-4 md:p-6 text-center space-y-2 sm:space-y-3 md:space-y-4">
                     {/* Tier Icon */}
-                    <div className={`mx-auto w-12 h-12 md:w-16 md:h-16 rounded-full ${tier.color} flex items-center justify-center text-black group-hover:scale-110 transition-all duration-300 shadow-xl`}>
-                      {React.cloneElement(tier.icon as React.ReactElement, { className: "h-6 w-6 md:h-8 md:w-8" })}
+                    <div className={`mx-auto w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full ${tier.color} flex items-center justify-center text-black group-hover:scale-110 transition-all duration-300 shadow-xl`}>
+                      {React.cloneElement(tier.icon as React.ReactElement, { className: "h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8" })}
                     </div>
 
                     {/* Tier Name */}
                     <div>
-                      <h4 className="font-classified text-base md:text-lg text-classified-gold mb-2">
+                      <h4 className="font-classified text-sm sm:text-base md:text-lg text-classified-gold mb-1 sm:mb-2">
                         {tier.name}
                       </h4>
                       <Badge 
@@ -106,18 +106,18 @@ const SponsorsSection = () => {
                     </div>
 
                     {/* Status */}
-                    <div className="space-y-2">
+                    <div className="space-y-1 sm:space-y-2">
                       <div className="text-xs md:text-sm font-intel text-gray-400 p-2 md:p-3 bg-black/20 rounded border border-classified-gold/10">
                         {tier.status}
                       </div>
                     </div>
 
                     {/* Available Slots */}
-                    <div className="pt-3 md:pt-4 border-t border-classified-gold/20">
+                    <div className="pt-2 sm:pt-3 md:pt-4 border-t border-classified-gold/20">
                       <div className="text-xs md:text-sm font-intel text-gray-400">
                         Positions Available:
                       </div>
-                      <div className="text-base md:text-lg font-classified text-classified-gold">
+                      <div className="text-sm sm:text-base md:text-lg font-classified text-classified-gold">
                         {tier.slots} Slots
                       </div>
                     </div>
@@ -138,11 +138,11 @@ const SponsorsSection = () => {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-classified-gold hover:bg-warning-amber text-black font-classified px-8 py-3 rounded-lg shadow-xl hover:shadow-classified transition-all duration-300 hover:scale-105 cursor-not-allowed opacity-60">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                <button className="bg-classified-gold hover:bg-warning-amber text-black font-classified px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg shadow-xl hover:shadow-classified transition-all duration-300 hover:scale-105 cursor-not-allowed opacity-60 text-sm sm:text-base">
                   ACCESS RESTRICTED
                 </button>
-                <button className="border border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10 font-classified px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-not-allowed opacity-60">
+                <button className="border border-classified-gold/50 text-classified-gold hover:bg-classified-gold/10 font-classified px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-not-allowed opacity-60 text-sm sm:text-base">
                   CLEARANCE PENDING
                 </button>
               </div>

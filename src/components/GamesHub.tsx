@@ -105,26 +105,26 @@ const GamesHub = () => {
     <section id="events" className="py-16 md:py-20 lg:py-24 bg-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-classified text-classified-gold mb-3">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-classified text-classified-gold mb-2 sm:mb-3">
             OPERATION TRINITY VEIL
           </h2>
           <p className="text-sm sm:text-base font-intel text-muted-foreground max-w-2xl mx-auto px-2">
             Four classified events. Each builds toward the final revelation. You will not see the full picture.
           </p>
-          <div className="w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-3" />
+          <div className="w-16 sm:w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-2 sm:mt-3" />
         </div>
 
         {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {trinityEvents.map((event, index) => (
             <Card 
               key={index}
               className="group hover:shadow-golden transition-all duration-500 hover:scale-105 bg-card/70 backdrop-blur-sm border-border/50 overflow-hidden h-full"
             >
-              <CardHeader className="relative pb-3">
-                <div className="flex items-start justify-between mb-2">
-                  <div className={`p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-all`}>
+              <CardHeader className="relative pb-2 sm:pb-3">
+                <div className="flex items-start justify-between mb-1 sm:mb-2">
+                  <div className={`p-1.5 sm:p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-all`}>
                     {event.icon}
                   </div>
                   <Badge variant="secondary" className={`font-mono-classified text-xs ${getDifficultyColor(event.difficulty)}`}>
@@ -132,20 +132,20 @@ const GamesHub = () => {
                   </Badge>
                 </div>
                 
-                <div className="mb-2">
-                  <div className="text-xs font-mono-classified text-warning-amber mb-1">
+                <div className="mb-1 sm:mb-2">
+                  <div className="text-xs font-mono-classified text-warning-amber mb-0.5 sm:mb-1">
                     EVENT {event.eventNumber}
                   </div>
-                  <CardTitle className="font-classified text-base text-foreground group-hover:text-classified-gold transition-colors leading-tight">
+                  <CardTitle className="font-classified text-sm sm:text-base text-foreground group-hover:text-classified-gold transition-colors leading-tight">
                     {event.title}
                   </CardTitle>
-                  <div className="text-sm font-intel text-warning-amber/80 italic">
+                  <div className="text-xs sm:text-sm font-intel text-warning-amber/80 italic">
                     {event.subtitle}
                   </div>
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-3 pt-0">
+              <CardContent className="space-y-2 sm:space-y-3 pt-0">
                 {/* Role */}
                 <div className="text-xs font-mono-classified text-muted-foreground">
                   <span className="text-classified-gold">ROLE:</span> {event.role}
@@ -157,7 +157,7 @@ const GamesHub = () => {
                 </div>
 
                 {/* Status */}
-                <div className="flex items-center justify-between pt-2">
+                <div className="flex items-center justify-between pt-1 sm:pt-2">
                   <span className={`text-xs font-mono-classified ${
                     event.status === "AVAILABLE" ? "text-classified-gold" : 
                     event.status === "LOCKED" ? "text-alert-red" : "text-warning-amber"
@@ -191,13 +191,13 @@ const GamesHub = () => {
         </div>
 
         {/* Warning */}
-        <div className="text-center mt-8 md:mt-12">
-          <div className="max-w-2xl mx-auto bg-alert-red/10 border border-alert-red/30 rounded-lg p-4 md:p-6">
+        <div className="text-center mt-6 sm:mt-8 md:mt-12">
+          <div className="max-w-2xl mx-auto bg-alert-red/10 border border-alert-red/30 rounded-lg p-3 sm:p-4 md:p-6">
             <div className="flex items-center justify-center gap-2 mb-2">
               <AlertTriangle className="h-4 w-4 text-alert-red" />
               <span className="font-classified text-alert-red text-sm">MORAL IMPLICATIONS WARNING</span>
             </div>
-            <p className="text-xs md:text-sm font-intel text-muted-foreground leading-relaxed px-2">
+            <p className="text-xs sm:text-sm font-intel text-muted-foreground leading-relaxed px-2">
               By participating in Operation Trinity Veil, you acknowledge that your actions may have unforeseen consequences. 
               The true nature of your mission will only be revealed upon completion of all events.
             </p>

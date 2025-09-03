@@ -62,8 +62,8 @@ const TimelineSection = () => {
 
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-classified text-classified-gold mb-3 md:mb-4">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-classified text-classified-gold mb-3 md:mb-4">
             OPERATION TIMELINE
           </h2>
           <p className="text-base md:text-lg font-intel text-muted-foreground max-w-2xl mx-auto px-2">
@@ -75,20 +75,20 @@ const TimelineSection = () => {
         {/* Vertical Timeline Container */}
         <div className="relative max-w-2xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-1 bg-muted" />
+          <div className="absolute left-4 sm:left-6 md:left-8 top-0 bottom-0 w-1 bg-muted" />
 
           {/* Timeline Events */}
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-6 sm:space-y-8 md:space-y-12">
             {timelineEvents.map((event, index) => (
               <div
                 key={index}
-                className="relative flex items-start gap-4 md:gap-8 cursor-pointer group"
+                className="relative flex items-start gap-3 sm:gap-4 md:gap-8 cursor-pointer group"
                 onMouseEnter={() => setSelectedEvent(event)}
                 onMouseLeave={() => setSelectedEvent(null)}
               >
                 {/* Event Marker */}
                 <div className={`
-                  w-5 h-5 md:w-6 md:h-6 rounded-full border-4 border-background z-10 mt-2
+                  w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full border-4 border-background z-10 mt-1 sm:mt-2
                   ${getCategoryColor(event.category)}
                   transition-combat group-hover:scale-125
                   shadow-military
@@ -96,24 +96,24 @@ const TimelineSection = () => {
 
                 {/* Event Content */}
                 <div className="flex-1 transform group-hover:scale-105 transition-combat">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-4 md:p-6 hover:bg-card/70 transition-colors">
+                  <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4 md:p-6 hover:bg-card/70 transition-colors">
                     <div className="flex items-start justify-between mb-2">
                       <div>
-                        <div className="text-sm font-mono-classified text-classified-gold font-bold mb-1">
+                        <div className="text-xs sm:text-sm font-mono-classified text-classified-gold font-bold mb-1">
                           {event.date}
                         </div>
-                        <h3 className="text-xl font-classified text-foreground group-hover:text-classified-gold transition-colors">
+                        <h3 className="text-lg sm:text-xl font-classified text-foreground group-hover:text-classified-gold transition-colors">
                           {event.title}
                         </h3>
                       </div>
-                      <div className={`px-3 py-1 rounded-full text-xs font-mono-classified text-background ${getCategoryColor(event.category)}`}>
+                      <div className={`px-2 sm:px-3 py-1 rounded-full text-xs font-mono-classified text-background ${getCategoryColor(event.category)}`}>
                         {event.category.replace('-', ' ').toUpperCase()}
                       </div>
                     </div>
 
                     {/* Hover Description */}
                     <div className={`
-                      mt-4 text-sm font-intel text-muted-foreground leading-relaxed
+                      mt-3 sm:mt-4 text-sm font-intel text-muted-foreground leading-relaxed
                       transition-all duration-300
                       ${selectedEvent?.title === event.title
                         ? 'opacity-100 max-h-32'
