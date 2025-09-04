@@ -56,7 +56,7 @@ const getCategoryIcon = (category: string) => {
 
 const FAQSection = () => {
   return (
-    <section id="briefing" className="py-16 md:py-20 lg:py-24 bg-background">
+    <section id="briefing" className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-shadow-dark to-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-12">

@@ -47,7 +47,7 @@ const TimelineSection = () => {
   const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
 
   return (
-    <section id="timeline" className="py-20 relative overflow-hidden">
+    <section id="timeline" className="py-20 relative overflow-hidden bg-gradient-to-b from-shadow-dark to-black">
       {/* Background */}
       <div
         className="absolute inset-0 opacity-30"
