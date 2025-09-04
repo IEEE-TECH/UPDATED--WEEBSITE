@@ -25,7 +25,7 @@ const MapSection = () => {
   };
 
   return (
-    <section id="location" className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-black to-shadow-dark">
+    <section id="location" className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-shadow-dark to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
