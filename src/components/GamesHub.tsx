@@ -102,7 +102,7 @@ const GamesHub = () => {
     setSelectedGame(null);
   };
   return (
-    <section id="events" className="py-16 md:py-20 lg:py-24 bg-muted/10">
+    <section id="events" className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-shadow-dark to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-6 sm:mb-8 md:mb-12">
