@@ -4,6 +4,7 @@ import GamesHub from "@/components/GamesHub";
 import TeamSection from "@/components/TeamSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
+import MapSection from "@/components/MapSection";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <TeamSection />
       <SponsorsSection />
       <FAQSection />
+      <MapSection />
     </main>
   );
 };

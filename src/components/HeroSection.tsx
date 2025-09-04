@@ -41,6 +41,9 @@ const Navbar = () => {
             <a href="#briefing" className="font-classified text-foreground hover:text-classified-gold transition-colors">
               BRIEFING
             </a>
+            <a href="#location" className="font-classified text-foreground hover:text-classified-gold transition-colors">
+              LOCATION
+            </a>
           </div>
 
           {/* Desktop Button */}
@@ -100,6 +103,13 @@ const Navbar = () => {
                 className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
               >
                 BRIEFING
+              </a>
+              <a
+                href="#location"
+                onClick={closeMobileMenu}
+                className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
+              >
+                LOCATION
               </a>
               <div className="pt-2 border-t border-border/30">
                 <Button
