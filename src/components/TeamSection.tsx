@@ -149,6 +149,69 @@ const teamMembers: TeamMember[] = [
     department: "Creative Operations",
     avatar: "IP",
     bgColor: "bg-alert-red"
+  },
+  {
+    name: "Tanmeet Kaur",
+    role: "Chairperson",
+    department: "Executive Leadership",
+    avatar: "TK",
+    bgColor: "bg-classified-gold"
+  },
+  {
+    name: "Aryan Thakur",
+    role: "IEEE Representative",
+    department: "Executive Leadership",
+    avatar: "AT",
+    bgColor: "bg-warning-amber"
+  },
+  {
+    name: "Umair Khan",
+    role: "Secretary",
+    department: "Administration",
+    avatar: "UK",
+    bgColor: "bg-intel-green"
+  },
+  {
+    name: "Aditya Dikonda",
+    role: "CS Representative",
+    department: "Computer Society",
+    avatar: "AD",
+    bgColor: "bg-alert-red"
+  },
+  {
+    name: "Jeevitha Gowda",
+    role: "WiE Representative",
+    department: "Women in Engineering",
+    avatar: "JG",
+    bgColor: "bg-classified-gold"
+  },
+  {
+    name: "Bobby Mehta",
+    role: "MTT-S Representative",
+    department: "Microwave Theory",
+    avatar: "BM",
+    bgColor: "bg-warning-amber"
+  },
+  {
+    name: "Mitali Bisht",
+    role: "Creative Mentor",
+    department: "Creative Operations",
+    avatar: "MB",
+    bgColor: "bg-intel-green"
+  },
+  {
+    name: "Nihal Shetty",
+    role: "PR and Admin Mentor",
+    department: "Public Relations",
+    avatar: "NS",
+    bgColor: "bg-alert-red"
+  },
+  {
+    name: "Prerna Sharma",
+    role: "Publicity Mentor",
+    department: "Public Relations",
+    avatar: "PS",
+    bgColor: "bg-classified-gold"
   }
 ];
 
@@ -185,12 +248,12 @@ const TeamSection = () => {
           } else {
             // Normal scroll
             scrollContainerRef.current.scrollTo({
-              left: scrollLeft + 4, // Faster continuous scroll
+              left: scrollLeft + 5, // Even faster continuous scroll
               behavior: 'smooth'
             });
           }
         }
-      }, 30); // Faster speed (lower = faster)
+      }, 25); // Even faster speed (lower = faster)
     }
 
     return () => {
