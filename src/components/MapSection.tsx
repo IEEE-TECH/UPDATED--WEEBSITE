@@ -33,7 +33,7 @@ const MapSection = () => {
             STRATEGIC LOCATION
           </h2>
           <p className="text-lg md:text-xl font-intel text-muted-foreground max-w-3xl mx-auto px-2">
-            SIES Graduate School of Technology - Command Center for Operation Trinity Veil
+            SIES Graduate School of Technology - Command Center for War Zone: Zero Hour
           </p>
           <div className="w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-4 md:mt-6" />
         </div>
@@ -213,7 +213,7 @@ const MapSection = () => {
             </div>
             <p className="text-xs md:text-sm font-intel text-muted-foreground leading-relaxed">
               All communications are monitored and encrypted. Unauthorized access attempts will be logged and investigated.
-              Operation Trinity Veil maintains strict information security protocols.
+              War Zone: Zero Hour maintains strict information security protocols.
             </p>
           </div>
         </div>

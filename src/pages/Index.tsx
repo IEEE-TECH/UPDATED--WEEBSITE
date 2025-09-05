@@ -53,7 +53,7 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-alert-red rounded-full"></div>
                 <span className="font-mono-classified text-xs text-muted-foreground">
-                  MISSION CODE: TRINITY VEIL
+                  MISSION CODE: WAR ZONE: ZERO HOUR
                 </span>
               </div>
             </div>

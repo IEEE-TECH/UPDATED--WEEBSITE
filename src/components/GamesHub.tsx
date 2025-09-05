@@ -107,7 +107,7 @@ const GamesHub = () => {
         {/* Section Header */}
         <div className="text-center mb-6 sm:mb-8 md:mb-12">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-classified text-classified-gold mb-2 sm:mb-3">
-            OPERATION TRINITY VEIL
+            WAR ZONE: ZERO HOUR
           </h2>
           <p className="text-sm sm:text-base font-intel text-muted-foreground max-w-2xl mx-auto px-2">
             Four classified events. Each builds toward the final revelation. You will not see the full picture.
@@ -198,7 +198,7 @@ const GamesHub = () => {
               <span className="font-classified text-alert-red text-sm">MORAL IMPLICATIONS WARNING</span>
             </div>
             <p className="text-xs sm:text-sm font-intel text-muted-foreground leading-relaxed px-2">
-              By participating in Operation Trinity Veil, you acknowledge that your actions may have unforeseen consequences. 
+              By participating in War Zone: Zero Hour, you acknowledge that your actions may have unforeseen consequences. 
               The true nature of your mission will only be revealed upon completion of all events.
             </p>
           </div>

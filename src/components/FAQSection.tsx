@@ -13,7 +13,7 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is Operation Trinity Veil?",
+    question: "What is War Zone: Zero Hour?",
     answer: "A classified evaluation system that tests logic, diplomacy, and engineering skills. You will be moved through four connected events without knowing the full picture until the final briefing.",
     category: "event"
   },
@@ -39,7 +39,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: "Is this based on real events?",
-    answer: "Operation Trinity Veil draws inspiration from classified wartime operations where scientists and operatives worked on projects without knowing their ultimate purpose.",
+    answer: "War Zone: Zero Hour draws inspiration from classified wartime operations where scientists and operatives worked on projects without knowing their ultimate purpose.",
     category: "technical"
   }
 ];
@@ -64,7 +64,7 @@ const FAQSection = () => {
             CLASSIFIED BRIEFING
           </h2>
           <p className="text-base md:text-lg font-intel text-muted-foreground max-w-2xl mx-auto px-2">
-            Need-to-know basis information about Operation Trinity Veil
+            Need-to-know basis information about War Zone: Zero Hour
           </p>
           <div className="w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-3 md:mt-4" />
         </div>

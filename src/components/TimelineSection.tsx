@@ -14,14 +14,14 @@ const timelineEvents: TimelineEvent[] = [
     date: "Sept 17, 2025",
     year: 2025,
     title: "Operation Launch",
-    description: "Trinity Veil operation officially launches. Initial briefings begin for classified personnel.",
+    description: "War Zone: Zero Hour operation officially launches. Initial briefings begin for classified personnel.",
     category: "turning-point"
   },
   {
     date: "Sept 18, 2025",
     year: 2025,
     title: "Day 1 Operations",
-    description: "First day of active Trinity Veil operations. Signal Room protocols activated.",
+    description: "First day of active War Zone: Zero Hour operations. Signal Room protocols activated.",
     category: "battle"
   },
   {
@@ -67,7 +67,7 @@ const TimelineSection = () => {
             OPERATION TIMELINE
           </h2>
           <p className="text-base md:text-lg font-intel text-muted-foreground max-w-2xl mx-auto px-2">
-            Key dates for Trinity Veil operation deployment and personnel clearance
+            Key dates for War Zone: Zero Hour operation deployment and personnel clearance
           </p>
           <div className="w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-3 md:mt-4" />
         </div>

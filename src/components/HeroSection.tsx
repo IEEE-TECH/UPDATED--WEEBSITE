@@ -173,7 +173,7 @@ const HeroSection = () => {
           <div className="mb-4 sm:mb-6">
             <div className="inline-block bg-alert-red/20 border border-alert-red/50 px-3 sm:px-4 py-2 rounded-lg mb-4">
               <span className="font-mono-classified text-alert-red text-xs sm:text-sm font-bold">
-                ⚠ CLASSIFIED - OPERATION TRINITY VEIL ⚠
+                ⚠ CLASSIFIED - WAR ZONE: ZERO HOUR ⚠
               </span>
             </div>
           </div>
@@ -185,7 +185,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-intel text-document-cream mb-3 sm:mb-4 opacity-90 px-2">
-            Operation Trinity Veil: The Final Confluence
+            War Zone: Zero Hour - The Final Confluence
           </p>
 
           {/* Moral Warning */}

@@ -34,7 +34,7 @@ const MainRegistrationForm: React.FC<MainRegistrationFormProps> = ({
             Mission Registration
           </DialogTitle>
           <DialogDescription className="text-gray-300 font-intel">
-            Join Trinity Veil: The Final Confluence. Quick registration via secure form.
+            Join War Zone: Zero Hour - The Final Confluence. Quick registration via secure form.
           </DialogDescription>
         </DialogHeader>
 
