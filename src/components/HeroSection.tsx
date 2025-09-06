@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Menu, X, Radio, MessageSquare, Wrench, Users } from "lucide-react";
+import { Menu, X, Radio, MessageSquare, Wrench, Users, AlertTriangle, FileText } from "lucide-react";
 import heroBackground from "@/assets/hero-battlefield.jpg";
 
 const Navbar = () => {
@@ -116,8 +116,12 @@ const Navbar = () => {
                   variant="outline"
                   size="sm"
                   className="w-full font-classified border-classified-gold text-classified-gold hover:bg-classified-gold hover:text-background"
-                  onClick={closeMobileMenu}
+                  onClick={() => {
+                    closeMobileMenu();
+                    handleBrochureClick();
+                  }}
                 >
+                  <FileText className="h-4 w-4 mr-2" />
                   ACCESS CLEARANCE
                 </Button>
               </div>
@@ -131,6 +135,7 @@ const Navbar = () => {
 
 const HeroSection = () => {
   const [showGameSelection, setShowGameSelection] = useState(false);
+  const [showBrochure, setShowBrochure] = useState(false);
 
   const handleRegistrationClick = () => {
     setShowGameSelection(true);
@@ -138,6 +143,14 @@ const HeroSection = () => {
 
   const handleGameSelectionClose = () => {
     setShowGameSelection(false);
+  };
+
+  const handleBrochureClick = () => {
+    setShowBrochure(true);
+  };
+
+  const handleBrochureClose = () => {
+    setShowBrochure(false);
   };
 
   const handleGameRegistration = (registrationLink: string, gameName: string) => {
@@ -287,59 +300,103 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Game Selection Modal */}
-      {showGameSelection && (
-        <Dialog open={showGameSelection} onOpenChange={handleGameSelectionClose}>
-          <DialogContent className="max-w-4xl bg-gradient-to-b from-shadow-dark to-black border-border/50">
+      {/* Brochure Modal */}
+      {showBrochure && (
+        <Dialog open={showBrochure} onOpenChange={handleBrochureClose}>
+          <DialogContent className="max-w-2xl bg-gradient-to-b from-shadow-dark to-black border-border/50">
             <DialogHeader>
-              <DialogTitle className="text-center font-classified text-classified-gold text-2xl">
-                SELECT YOUR BATTLEFIELD
+              <DialogTitle className="text-center font-classified text-classified-gold text-2xl flex items-center justify-center gap-2">
+                <AlertTriangle className="h-6 w-6 text-alert-red" />
+                CLASSIFIED BROCHURE
               </DialogTitle>
               <p className="text-center font-intel text-muted-foreground">
-                Choose your event and register for War Zone: Zero Hour
+                War Zone: Zero Hour - Operation Briefing
               </p>
             </DialogHeader>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-              {games.map((game, index) => (
-                <div
-                  key={index}
-                  className="group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:border-classified-gold/50 transition-all hover:scale-105 cursor-pointer"
-                  onClick={() => handleGameRegistration(game.registrationLink, game.title)}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-all">
-                        {game.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-classified text-lg text-foreground group-hover:text-classified-gold transition-colors">
-                          {game.title}
-                        </h3>
-                        <p className="text-sm font-intel text-warning-amber/80">
-                          {game.subtitle}
-                        </p>
-                      </div>
+            <div className="space-y-6 mt-6">
+              {/* Warning Section */}
+              <div className="bg-alert-red/10 border border-alert-red/30 rounded-lg p-4">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="h-5 w-5 text-alert-red mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-classified text-alert-red text-sm mb-2">
+                      ⚠ SECURITY CLEARANCE REQUIRED
+                    </h3>
+                    <p className="text-xs font-mono-classified text-muted-foreground leading-relaxed">
+                      This document contains classified information about War Zone: Zero Hour operations. 
+                      Unauthorized access is prohibited and may result in immediate security protocol activation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Operation Details */}
+              <div className="space-y-4">
+                <div className="bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-4">
+                  <h4 className="font-classified text-classified-gold text-lg mb-3">
+                    OPERATION OVERVIEW
+                  </h4>
+                  <div className="space-y-2 text-sm font-intel text-foreground/90">
+                    <p><span className="text-classified-gold">Code Name:</span> War Zone: Zero Hour</p>
+                    <p><span className="text-classified-gold">Classification:</span> TOP SECRET</p>
+                    <p><span className="text-classified-gold">Duration:</span> 48 Hours of Intense Combat</p>
+                    <p><span className="text-classified-gold">Participants:</span> Elite Gaming Forces</p>
+                  </div>
+                </div>
+
+                <div className="bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-4">
+                  <h4 className="font-classified text-classified-gold text-lg mb-3">
+                    COMBAT EVENTS
+                  </h4>
+                  <div className="grid grid-cols-1 gap-3">
+                    <div className="flex items-center gap-3 p-2 bg-classified-gold/10 rounded">
+                      <Radio className="h-4 w-4 text-classified-gold" />
+                      <span className="text-sm font-intel">Inquisitive - Cryptography Challenge</span>
                     </div>
-                    <div className={`px-2 py-1 rounded text-xs font-mono-classified ${getDifficultyColor(game.difficulty)}`}>
-                      {game.difficulty}
+                    <div className="flex items-center gap-3 p-2 bg-warning-amber/10 rounded">
+                      <MessageSquare className="h-4 w-4 text-warning-amber" />
+                      <span className="text-sm font-intel">Squabble - Strategic Debate</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-2 bg-alert-red/10 rounded">
+                      <Wrench className="h-4 w-4 text-alert-red" />
+                      <span className="text-sm font-intel">Eureka - Innovation Battleground</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-2 bg-document-cream/10 rounded">
+                      <Users className="h-4 w-4 text-document-cream" />
+                      <span className="text-sm font-intel">Warlash 2.0 - Ultimate Showdown</span>
                     </div>
                   </div>
-                  
-                  <Button
-                    className="w-full bg-classified-gold hover:bg-primary text-background font-classified transition-all"
-                    size="sm"
-                  >
-                    REGISTER NOW
-                  </Button>
                 </div>
-              ))}
-            </div>
-            
-            <div className="text-center mt-6">
-              <p className="text-xs font-mono-classified text-muted-foreground">
-                Security clearance required • Moral implications acknowledged
-              </p>
+              </div>
+
+              {/* Security Warning */}
+              <div className="bg-warning-amber/10 border border-warning-amber/30 rounded-lg p-4">
+                <p className="text-xs font-mono-classified text-warning-amber leading-relaxed text-center">
+                  "The battlefield is no place for the unprepared. Every decision carries the weight of victory or defeat. 
+                  Choose your path wisely, soldier."
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 pt-4">
+                <Button
+                  className="flex-1 bg-classified-gold hover:bg-primary text-background font-classified"
+                  onClick={() => {
+                    handleBrochureClose();
+                    handleRegistrationClick();
+                  }}
+                >
+                  PROCEED TO REGISTRATION
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex-1 border-border/50 hover:border-classified-gold/50 font-classified"
+                  onClick={handleBrochureClose}
+                >
+                  ABORT MISSION
+                </Button>
+              </div>
             </div>
           </DialogContent>
         </Dialog>
