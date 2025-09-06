@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import MainRegistrationForm from "@/components/forms/MainRegistrationForm";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Menu, X, Radio, MessageSquare, Wrench, Users } from "lucide-react";
 import heroBackground from "@/assets/hero-battlefield.jpg";
 
 const Navbar = () => {
@@ -130,14 +130,74 @@ const Navbar = () => {
 };
 
 const HeroSection = () => {
-  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+  const [showGameSelection, setShowGameSelection] = useState(false);
 
   const handleRegistrationClick = () => {
-    setShowRegistrationForm(true);
+    setShowGameSelection(true);
   };
 
-  const handleRegistrationClose = () => {
-    setShowRegistrationForm(false);
+  const handleGameSelectionClose = () => {
+    setShowGameSelection(false);
+  };
+
+  const handleGameRegistration = (registrationLink: string, gameName: string) => {
+    if (registrationLink) {
+      console.log('Opening registration link:', registrationLink);
+      try {
+        const newWindow = window.open(registrationLink, '_blank', 'noopener,noreferrer');
+        if (!newWindow) {
+          // Fallback for popup blockers
+          window.location.href = registrationLink;
+        }
+      } catch (error) {
+        console.error('Error opening link:', error);
+        // Fallback
+        window.location.href = registrationLink;
+      }
+    } else {
+      console.error('No registration link provided for:', gameName);
+    }
+  };
+
+  const games = [
+    {
+      title: "Inquisitive",
+      subtitle: "CRYPTOGRAPHY CHALLENGE",
+      icon: <Radio className="h-6 w-6" />,
+      difficulty: "CLASSIFIED",
+      registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfSwE2j8oDMFvRerorP8OempfRwsn7hxmldY45GSAcK5qdLTQ/viewform?usp=header"
+    },
+    {
+      title: "Squabble",
+      subtitle: "STRATEGIC DEBATE",
+      icon: <MessageSquare className="h-6 w-6" />,
+      difficulty: "TOP SECRET",
+      registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSftB7euKNMtzJ4DaeyoPwm1xhgcCLdpERbxg1YRaCoSUYzJOA/viewform?usp=header"
+    },
+    {
+      title: "Eureka",
+      subtitle: "INNOVATION BATTLEGROUND",
+      icon: <Wrench className="h-6 w-6" />,
+      difficulty: "EYES ONLY",
+      registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfuTOondyINY9quRJnDdhmMU3ueHWzIOcYiQnnVq6BaDe2-kw/viewform?usp=header"
+    },
+    {
+      title: "Warlash 2.0",
+      subtitle: "ULTIMATE SHOWDOWN",
+      icon: <Users className="h-6 w-6" />,
+      difficulty: "ULTRA",
+      registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLScVD_XK0HVYD3ZzNGvtfqtObO4FzlseXAbLIqQgTmjL6QJDew/viewform?usp=header"
+    }
+  ];
+
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case "CLASSIFIED": return "text-classified-gold bg-classified-gold/20";
+      case "TOP SECRET": return "text-warning-amber bg-warning-amber/20";
+      case "EYES ONLY": return "text-alert-red bg-alert-red/20";
+      case "ULTRA": return "text-document-cream bg-document-cream/20";
+      default: return "text-muted-foreground bg-muted/20";
+    }
   };
 
   return (
@@ -227,11 +287,62 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Registration Form Modal */}
-      {showRegistrationForm && (
-        <MainRegistrationForm
-          onClose={handleRegistrationClose}
-        />
+      {/* Game Selection Modal */}
+      {showGameSelection && (
+        <Dialog open={showGameSelection} onOpenChange={handleGameSelectionClose}>
+          <DialogContent className="max-w-4xl bg-gradient-to-b from-shadow-dark to-black border-border/50">
+            <DialogHeader>
+              <DialogTitle className="text-center font-classified text-classified-gold text-2xl">
+                SELECT YOUR BATTLEFIELD
+              </DialogTitle>
+              <p className="text-center font-intel text-muted-foreground">
+                Choose your event and register for War Zone: Zero Hour
+              </p>
+            </DialogHeader>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+              {games.map((game, index) => (
+                <div
+                  key={index}
+                  className="group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:border-classified-gold/50 transition-all hover:scale-105 cursor-pointer"
+                  onClick={() => handleGameRegistration(game.registrationLink, game.title)}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-all">
+                        {game.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-classified text-lg text-foreground group-hover:text-classified-gold transition-colors">
+                          {game.title}
+                        </h3>
+                        <p className="text-sm font-intel text-warning-amber/80">
+                          {game.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={`px-2 py-1 rounded text-xs font-mono-classified ${getDifficultyColor(game.difficulty)}`}>
+                      {game.difficulty}
+                    </div>
+                  </div>
+                  
+                  <Button
+                    className="w-full bg-classified-gold hover:bg-primary text-background font-classified transition-all"
+                    size="sm"
+                  >
+                    REGISTER NOW
+                  </Button>
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-6">
+              <p className="text-xs font-mono-classified text-muted-foreground">
+                Security clearance required • Moral implications acknowledged
+              </p>
+            </div>
+          </DialogContent>
+        </Dialog>
       )}
     </section>
   );
