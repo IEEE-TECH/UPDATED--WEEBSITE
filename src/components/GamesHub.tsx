@@ -54,7 +54,7 @@ const trinityEvents: EventCard[] = [
     difficulty: "TOP SECRET",
     eventNumber: 2,
     status: "AVAILABLE",
-    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLSftB7euKNMtzJ4DaeyoPwm1xhgcCLdpERbxg1YRaCoSUYzJOA/viewform?usp=header"
+    registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSftB7euKNMtzJ4DaeyoPwm1xhgcCLdpERbxg1YRaCoSUYzJOA/viewform?usp=header"
   },
   {
     title: "Eureka",
@@ -68,7 +68,7 @@ const trinityEvents: EventCard[] = [
     difficulty: "EYES ONLY",
     eventNumber: 3,
     status: "AVAILABLE",
-    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLSfuTOondyINY9quRJnDdhmMU3ueHWzIOcYiQnnVq6BaDe2-kw/viewform?usp=header"
+    registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfuTOondyINY9quRJnDdhmMU3ueHWzIOcYiQnnVq6BaDe2-kw/viewform?usp=header"
   },
   {
     title: "Warlash 2.0",
@@ -82,7 +82,7 @@ const trinityEvents: EventCard[] = [
     difficulty: "ULTRA",
     eventNumber: 4,
     status: "AVAILABLE",
-    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLScVD_XK0HVYD3ZzNGvtfqtObO4FzlseXAbLIqQgTmjL6QJDew/viewform?usp=header"
+    registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLScVD_XK0HVYD3ZzNGvtfqtObO4FzlseXAbLIqQgTmjL6QJDew/viewform?usp=header"
   }
 ];
 
