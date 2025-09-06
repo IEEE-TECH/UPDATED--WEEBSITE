@@ -40,7 +40,7 @@ const trinityEvents: EventCard[] = [
     difficulty: "CLASSIFIED",
     eventNumber: 1,
     status: "AVAILABLE",
-    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLSfSwE2j8oDMFvRerorP8OempfRwsn7hxmldY45GSAcK5qdLTQ/viewform?usp=header"
+    registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfSwE2j8oDMFvRerorP8OempfRwsn7hxmldY45GSAcK5qdLTQ/viewform?usp=header"
   },
   {
     title: "Squabble",
@@ -101,7 +101,20 @@ const GamesHub = () => {
 
   const handleGameRegistration = (registrationLink: string, gameName: string) => {
     if (registrationLink) {
-      window.open(registrationLink, '_blank');
+      console.log('Opening registration link:', registrationLink);
+      try {
+        const newWindow = window.open(registrationLink, '_blank', 'noopener,noreferrer');
+        if (!newWindow) {
+          // Fallback for popup blockers
+          window.location.href = registrationLink;
+        }
+      } catch (error) {
+        console.error('Error opening link:', error);
+        // Fallback
+        window.location.href = registrationLink;
+      }
+    } else {
+      console.error('No registration link provided for:', gameName);
     }
   };
 
@@ -174,12 +187,15 @@ const GamesHub = () => {
                 </div>
 
                 {/* Action Button */}
-                <Button 
-                  className="w-full text-xs group-hover:bg-classified-gold group-hover:text-background transition-all"
+                <Button
+                  className="w-full text-xs group-hover:bg-classified-gold group-hover:text-background transition-all cursor-pointer"
                   variant="outline"
                   size="sm"
                   disabled={event.status === "LOCKED"}
-                  onClick={() => event.registrationLink && handleGameRegistration(event.registrationLink, event.title)}
+                  onClick={() => {
+                    console.log('Button clicked for:', event.title);
+                    event.registrationLink && handleGameRegistration(event.registrationLink, event.title);
+                  }}
                 >
                   {event.status === "LOCKED" ? (
                     <>
@@ -187,7 +203,9 @@ const GamesHub = () => {
                       REQUIRES CLEARANCE
                     </>
                   ) : event.status === "AVAILABLE" ? (
-                    "REGISTER NOW"
+                    <>
+                      📝 REGISTER NOW
+                    </>
                   ) : (
                     "COMPLETED"
                   )}
