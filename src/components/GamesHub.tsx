@@ -24,60 +24,65 @@ interface EventCard {
   difficulty: "CLASSIFIED" | "TOP SECRET" | "EYES ONLY" | "ULTRA";
   eventNumber: number;
   status: "AVAILABLE" | "LOCKED" | "COMPLETED";
+  registrationLink?: string;
 }
 
 const trinityEvents: EventCard[] = [
   {
-    title: "The Signal Room",
-    subtitle: "INQUISITIVE",
-    role: "Newly assigned cryptographers in a fortified communications bunker",
-    briefing: "You are the unseen front line. Every cipher you break, every signal you intercept, is another step toward saving our forces. Fail — and they walk blind into the enemy's guns.",
-    objective: "Crack intercepted enemy transmissions before they can be acted upon",
-    task: "Solve logic puzzles, wartime ciphers, and code-breaking challenges under time pressure",
-    outcome: "Correct solutions reveal cipher fragments — numbers, symbols, words. The final puzzle points to the movement of a mysterious classified cargo through hostile territory.",
+    title: "Inquisitive",
+    subtitle: "CRYPTOGRAPHY CHALLENGE",
+    role: "Code-breaking specialists in a secure operations center",
+    briefing: "You are the digital frontline. Every encrypted message you crack brings us closer to victory. Your analytical mind is our greatest weapon against the enemy's communications network.",
+    objective: "Decrypt classified enemy transmissions and solve complex puzzles",
+    task: "Analyze encrypted messages, solve logic puzzles, and decode wartime ciphers under time pressure",
+    outcome: "Successful decryption reveals critical intelligence that could turn the tide of battle.",
     icon: <Radio className="h-6 w-6" />,
     difficulty: "CLASSIFIED",
     eventNumber: 1,
-    status: "AVAILABLE"
+    status: "AVAILABLE",
+    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLSfSwE2j8oDMFvRerorP8OempfRwsn7hxmldY45GSAcK5qdLTQ/viewform?usp=header"
   },
   {
-    title: "The Iron Route",
-    subtitle: "SQUABBLE",
-    role: "Diplomatic operatives securing safe passage for the 'cargo' decoded in Event 1",
-    briefing: "You must ensure the package's delivery. No one must suspect its true nature. You will bargain, lie, or sacrifice — whatever is needed to clear its path.",
-    objective: "Protect the shipment without revealing its existence to neutral or hostile powers",
-    task: "Debate strategic routes, broker ceasefires, and negotiate alliances — each choice affects risk, time, and secrecy",
-    outcome: "The chosen route is recorded in the mission log. Intercepted messages from Event 1 resurface mid-negotiation, hinting at deeper connections.",
+    title: "Squabble",
+    subtitle: "STRATEGIC DEBATE",
+    role: "Tactical negotiators in the war room",
+    briefing: "Diplomacy is a weapon sharper than any blade. You must navigate the treacherous waters of negotiation, where every word could mean victory or defeat.",
+    objective: "Win strategic debates and negotiate alliances",
+    task: "Engage in high-stakes debates, broker temporary alliances, and outmaneuver opponents in verbal combat",
+    outcome: "Your negotiation skills determine whether forces advance or retreat, alliances form or break.",
     icon: <MessageSquare className="h-6 w-6" />,
     difficulty: "TOP SECRET",
     eventNumber: 2,
-    status: "LOCKED"
+    status: "AVAILABLE",
+    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLSftB7euKNMtzJ4DaeyoPwm1xhgcCLdpERbxg1YRaCoSUYzJOA/viewform?usp=header"
   },
   {
-    title: "The Black Forge",
-    subtitle: "TBD",
-    role: "Military engineers tasked with securing and containing the 'cargo' from Event 2",
-    briefing: "The enemy compound you now hold is unstable. Mishandle it, and it will destroy you. Secure it to Command's exact specifications — there can be no mistakes.",
-    objective: "Design a containment casing for an unstable, classified payload",
-    task: "Using provided materials, sketches, or models, build a casing that matches strict 'classified technical specs'",
-    outcome: "Completed design is approved by High Command. A technician quietly remarks: 'Do you even know what you've made?' First real hint that the events are connected.",
+    title: "Eureka",
+    subtitle: "INNOVATION BATTLEGROUND",
+    role: "Brilliant minds in the innovation lab",
+    briefing: "Innovation is born in the heat of battle. You must think beyond conventional limits, creating solutions that will redefine the art of war.",
+    objective: "Solve complex problems with creative and innovative solutions",
+    task: "Tackle engineering challenges, design innovative solutions, and compete in intellectual combat",
+    outcome: "Your breakthrough innovations could provide the technological edge needed for victory.",
     icon: <Wrench className="h-6 w-6" />,
     difficulty: "EYES ONLY",
     eventNumber: 3,
-    status: "LOCKED"
+    status: "AVAILABLE",
+    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLSfuTOondyINY9quRJnDdhmMU3ueHWzIOcYiQnnVq6BaDe2-kw/viewform?usp=header"
   },
   {
-    title: "The Convergence Briefing",
-    subtitle: "GRAND REVEAL & MORAL CHOICE",
-    role: "War council members in a secure underground facility",
-    briefing: "A secure underground war council. Lights dim. A single projector illuminates the table. The truth about what you have built will be revealed.",
-    objective: "Face the moral consequences of your actions and make the final decision",
-    task: "Learn that you have unknowingly built a weapon capable of ending the war in a single strike — but at the cost of annihilating an entire city",
-    outcome: "Strike immediately, delay, sabotage, or redirect. The council votes. Your names are etched into history — for better or worse.",
+    title: "Warlash 2.0",
+    subtitle: "ULTIMATE SHOWDOWN",
+    role: "Elite warriors in the final arena",
+    briefing: "This is where legends are forged and destinies decided. Every battle, every victory, every defeat shapes the future of warfare itself.",
+    objective: "Compete in the ultimate gaming tournament",
+    task: "Face off against the best competitors in intense gaming battles across multiple rounds",
+    outcome: "Only the strongest will emerge victorious, claiming the title of ultimate champion.",
     icon: <Users className="h-6 w-6" />,
     difficulty: "ULTRA",
     eventNumber: 4,
-    status: "LOCKED"
+    status: "AVAILABLE",
+    registrationLink: "https://docs.google.com/forms/d/e/1FAlpQLScVD_XK0HVYD3ZzNGvtfqtObO4FzlseXAbLIqQgTmjL6QJDew/viewform?usp=header"
   }
 ];
 
@@ -94,8 +99,10 @@ const getDifficultyColor = (difficulty: string) => {
 const GamesHub = () => {
   const [selectedGame, setSelectedGame] = useState<{ id: string; name: string } | null>(null);
 
-  const handleGameRegistration = (gameId: string, gameName: string) => {
-    setSelectedGame({ id: gameId, name: gameName });
+  const handleGameRegistration = (registrationLink: string, gameName: string) => {
+    if (registrationLink) {
+      window.open(registrationLink, '_blank');
+    }
   };
 
   const handleCloseRegistration = () => {
@@ -110,7 +117,7 @@ const GamesHub = () => {
             WAR ZONE: ZERO HOUR
           </h2>
           <p className="text-sm sm:text-base font-intel text-muted-foreground max-w-2xl mx-auto px-2">
-            Four classified events. Each builds toward the final revelation. You will not see the full picture.
+            Four intense gaming events await. Test your skills in cryptography, strategy, innovation, and ultimate combat. Register now to join the battlefield.
           </p>
           <div className="w-16 sm:w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-2 sm:mt-3" />
         </div>
@@ -172,7 +179,7 @@ const GamesHub = () => {
                   variant="outline"
                   size="sm"
                   disabled={event.status === "LOCKED"}
-                  onClick={() => event.status === "AVAILABLE" && handleGameRegistration(`game${event.eventNumber}`, event.title)}
+                  onClick={() => event.registrationLink && handleGameRegistration(event.registrationLink, event.title)}
                 >
                   {event.status === "LOCKED" ? (
                     <>
@@ -180,7 +187,7 @@ const GamesHub = () => {
                       REQUIRES CLEARANCE
                     </>
                   ) : event.status === "AVAILABLE" ? (
-                    "BEGIN MISSION"
+                    "REGISTER NOW"
                   ) : (
                     "COMPLETED"
                   )}
@@ -195,11 +202,11 @@ const GamesHub = () => {
           <div className="max-w-2xl mx-auto bg-alert-red/10 border border-alert-red/30 rounded-lg p-3 sm:p-4 md:p-6">
             <div className="flex items-center justify-center gap-2 mb-2">
               <AlertTriangle className="h-4 w-4 text-alert-red" />
-              <span className="font-classified text-alert-red text-sm">MORAL IMPLICATIONS WARNING</span>
+              <span className="font-classified text-alert-red text-sm">BATTLE READY WARNING</span>
             </div>
             <p className="text-xs sm:text-sm font-intel text-muted-foreground leading-relaxed px-2">
-              By participating in War Zone: Zero Hour, you acknowledge that your actions may have unforeseen consequences. 
-              The true nature of your mission will only be revealed upon completion of all events.
+              By participating in War Zone: Zero Hour events, you acknowledge that competition is fierce and only the strongest will prevail. 
+              Register for your chosen event and prepare for battle.
             </p>
           </div>
         </div>
