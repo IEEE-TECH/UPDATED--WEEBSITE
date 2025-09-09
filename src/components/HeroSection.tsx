@@ -439,9 +439,9 @@ const HeroSection = () => {
       {/* Navbar */}
       <Navbar onOpenRegistration={handleRegistrationClick} />
 
-      {/* Background Image - Optimized for mobile */}
+      {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${heroBackground})`,
         }}
@@ -450,11 +450,11 @@ const HeroSection = () => {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-classified" />
 
-      {/* Classified Document Effects - Reduced on mobile */}
-      <div className="absolute inset-0 texture-redacted opacity-10 sm:opacity-20" />
+      {/* Classified Document Effects */}
+      <div className="absolute inset-0 texture-redacted opacity-20" />
 
-      {/* Subtle Shadow Elements - Optimized */}
-      <div className="absolute inset-0 hidden sm:block">
+      {/* Subtle Shadow Elements */}
+      <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-32 h-32 opacity-10 bg-shadow-dark rounded-full blur-xl" />
         <div className="absolute bottom-40 right-20 w-24 h-24 opacity-15 bg-intel-green rounded-full blur-lg" />
         <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 bg-shadow-dark rounded-full blur-md" />
@@ -473,7 +473,7 @@ const HeroSection = () => {
           </div>
 
           {/* Main Title - Mobile Responsive */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-classified text-classified-gold mb-2 sm:mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-classified text-classified-gold mb-2 sm:mb-4 leading-tight">
             TECHOPEDIA 14
           </h1>
 
@@ -501,7 +501,7 @@ const HeroSection = () => {
               variant="hero"
               size="lg"
               onClick={handleRegistrationClick}
-              className="bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 shadow-classified transition-all duration-300 hover:scale-105 touch-manipulation"
+              className="bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 shadow-classified transition-all hover:scale-105"
             >
               REGISTER NOW
             </Button>
@@ -513,10 +513,10 @@ const HeroSection = () => {
         </div>
 
         {/* Classification Stamps - Hidden on very small screens */}
-        <div className="absolute -top-8 -right-8 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 border-2 border-alert-red/30 rounded-full flex items-center justify-center transform rotate-12 hidden sm:flex">
+        <div className="absolute -top-8 -right-8 w-10 sm:w-12 h-10 sm:h-12 border-2 border-alert-red/30 rounded-full flex items-center justify-center transform rotate-12 hidden sm:flex">
           <span className="text-alert-red text-xs font-classified">TOP<br/>SECRET</span>
         </div>
-        <div className="absolute top-16 -left-6 w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 border border-warning-amber/30 rounded flex items-center justify-center transform -rotate-12 hidden sm:flex">
+        <div className="absolute top-16 -left-6 w-8 sm:w-10 h-8 sm:h-10 border border-warning-amber/30 rounded flex items-center justify-center transform -rotate-12 hidden sm:flex">
           <span className="text-warning-amber text-xs font-classified">EYES<br/>ONLY</span>
         </div>
       </div>
