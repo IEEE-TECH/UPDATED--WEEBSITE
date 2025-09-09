@@ -258,7 +258,7 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
         </div>
       </nav>
 
-      {/* Brochure Modal - Mobile Optimized */}
+      {/* Brochure Modal */}
       {showBrochure && (
         <Dialog open={showBrochure} onOpenChange={handleBrochureClose}>
           <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-shadow-dark to-black border-border/50">
@@ -336,10 +336,10 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                 </p>
               </div>
 
-              {/* Action Buttons - Mobile Optimized */}
+              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 pt-4 sticky bottom-0 bg-gradient-to-b from-shadow-dark to-black pb-2">
                 <Button
-                  className="flex-1 bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base touch-manipulation"
+                  className="flex-1 bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base"
                   onClick={() => {
                     handleBrochureClose();
                     onOpenRegistration?.();
@@ -349,7 +349,7 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex-1 border-border/50 hover:border-classified-gold/50 font-classified text-sm sm:text-base touch-manipulation"
+                  className="flex-1 border-border/50 hover:border-classified-gold/50 font-classified text-sm sm:text-base"
                   onClick={handleBrochureClose}
                 >
                   ABORT MISSION
@@ -460,7 +460,7 @@ const HeroSection = () => {
         <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 bg-shadow-dark rounded-full blur-md" />
       </div>
 
-      {/* Content - Mobile Optimized */}
+      {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-16 sm:pt-20">
         <div className="animate-fade-up">
           {/* Classification Header */}
@@ -521,7 +521,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Game Selection Modal - Mobile Optimized */}
+      {/* Game Selection Modal */}
       {showGameSelection && (
         <Dialog open={showGameSelection} onOpenChange={handleGameSelectionClose}>
           <DialogContent className="max-w-[95vw] sm:max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-shadow-dark to-black border-border/50">
@@ -538,7 +538,7 @@ const HeroSection = () => {
               {games.map((game, index) => (
                 <div
                   key={index}
-                  className="group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4 hover:border-classified-gold/50 transition-all duration-300 hover:scale-[1.02] cursor-pointer touch-manipulation will-change-transform"
+                  className="group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4 hover:border-classified-gold/50 transition-all duration-300 hover:scale-[1.02] cursor-pointer"
                   onClick={() => handleGameRegistration(game.registrationLink, game.title)}
                 >
                   <div className="flex items-start justify-between mb-3">
@@ -561,7 +561,7 @@ const HeroSection = () => {
                   </div>
 
                   <Button
-                    className="w-full bg-classified-gold hover:bg-primary text-background font-classified transition-all duration-300 touch-manipulation"
+                    className="w-full bg-classified-gold hover:bg-primary text-background font-classified transition-all duration-300"
                     size="sm"
                   >
                     REGISTER NOW
