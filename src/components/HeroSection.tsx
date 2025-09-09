@@ -258,31 +258,31 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
         </div>
       </nav>
 
-      {/* Brochure Modal */}
+      {/* Brochure Modal - Mobile Optimized */}
       {showBrochure && (
         <Dialog open={showBrochure} onOpenChange={handleBrochureClose}>
-          <DialogContent className="max-w-2xl bg-gradient-to-b from-shadow-dark to-black border-border/50">
-            <DialogHeader>
-              <DialogTitle className="text-center font-classified text-classified-gold text-2xl flex items-center justify-center gap-2">
-                <AlertTriangle className="h-6 w-6 text-alert-red" />
-                CLASSIFIED BROCHURE
+          <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-shadow-dark to-black border-border/50">
+            <DialogHeader className="sticky top-0 bg-gradient-to-b from-shadow-dark to-black pb-4">
+              <DialogTitle className="text-center font-classified text-classified-gold text-xl sm:text-2xl flex items-center justify-center gap-2">
+                <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-alert-red" />
+                <span className="text-lg sm:text-xl">CLASSIFIED BROCHURE</span>
               </DialogTitle>
-              <p className="text-center font-intel text-muted-foreground">
+              <p className="text-center font-intel text-muted-foreground text-sm">
                 War Zone: Zero Hour - Operation Briefing
               </p>
             </DialogHeader>
-            
-            <div className="space-y-6 mt-6">
+
+            <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-6 px-2 sm:px-0">
               {/* Warning Section */}
-              <div className="bg-alert-red/10 border border-alert-red/30 rounded-lg p-4">
+              <div className="bg-alert-red/10 border border-alert-red/30 rounded-lg p-3 sm:p-4">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="h-5 w-5 text-alert-red mt-0.5 flex-shrink-0" />
+                  <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 text-alert-red mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="font-classified text-alert-red text-sm mb-2">
                       ⚠ SECURITY CLEARANCE REQUIRED
                     </h3>
                     <p className="text-xs font-mono-classified text-muted-foreground leading-relaxed">
-                      This document contains classified information about War Zone: Zero Hour operations. 
+                      This document contains classified information about War Zone: Zero Hour operations.
                       Unauthorized access is prohibited and may result in immediate security protocol activation.
                     </p>
                   </div>
@@ -290,56 +290,56 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
               </div>
 
               {/* Operation Details */}
-              <div className="space-y-4">
-                <div className="bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-4">
-                  <h4 className="font-classified text-classified-gold text-lg mb-3">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4">
+                  <h4 className="font-classified text-classified-gold text-base sm:text-lg mb-3">
                     OPERATION OVERVIEW
                   </h4>
                   <div className="space-y-2 text-sm font-intel text-foreground/90">
-                    <p><span className="text-classified-gold">Code Name:</span> War Zone: Zero Hour</p>
-                    <p><span className="text-classified-gold">Classification:</span> TOP SECRET</p>
-                    <p><span className="text-classified-gold">Duration:</span> 48 Hours of Intense Combat</p>
-                    <p><span className="text-classified-gold">Participants:</span> Elite Gaming Forces</p>
+                    <p><span className="text-classified-gold font-semibold">Code Name:</span> War Zone: Zero Hour</p>
+                    <p><span className="text-classified-gold font-semibold">Classification:</span> TOP SECRET</p>
+                    <p><span className="text-classified-gold font-semibold">Duration:</span> 48 Hours of Intense Combat</p>
+                    <p><span className="text-classified-gold font-semibold">Participants:</span> Elite Gaming Forces</p>
                   </div>
                 </div>
 
-                <div className="bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-4">
-                  <h4 className="font-classified text-classified-gold text-lg mb-3">
+                <div className="bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4">
+                  <h4 className="font-classified text-classified-gold text-base sm:text-lg mb-3">
                     COMBAT EVENTS
                   </h4>
-                  <div className="grid grid-cols-1 gap-3">
+                  <div className="grid grid-cols-1 gap-2 sm:gap-3">
                     <div className="flex items-center gap-3 p-2 bg-classified-gold/10 rounded">
-                      <Radio className="h-4 w-4 text-classified-gold" />
-                      <span className="text-sm font-intel">Inquisitive - Cryptography Challenge</span>
+                      <Radio className="h-4 w-4 text-classified-gold flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-intel">Inquisitive - Cryptography Challenge</span>
                     </div>
                     <div className="flex items-center gap-3 p-2 bg-warning-amber/10 rounded">
-                      <MessageSquare className="h-4 w-4 text-warning-amber" />
-                      <span className="text-sm font-intel">Squabble - Strategic Debate</span>
+                      <MessageSquare className="h-4 w-4 text-warning-amber flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-intel">Squabble - Strategic Debate</span>
                     </div>
                     <div className="flex items-center gap-3 p-2 bg-alert-red/10 rounded">
-                      <Wrench className="h-4 w-4 text-alert-red" />
-                      <span className="text-sm font-intel">Eureka - Innovation Battleground</span>
+                      <Wrench className="h-4 w-4 text-alert-red flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-intel">Eureka - Innovation Battleground</span>
                     </div>
                     <div className="flex items-center gap-3 p-2 bg-document-cream/10 rounded">
-                      <Users className="h-4 w-4 text-document-cream" />
-                      <span className="text-sm font-intel">Warlash 2.0 - Ultimate Showdown</span>
+                      <Users className="h-4 w-4 text-document-cream flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-intel">Warlash 2.0 - Ultimate Showdown</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Security Warning */}
-              <div className="bg-warning-amber/10 border border-warning-amber/30 rounded-lg p-4">
+              <div className="bg-warning-amber/10 border border-warning-amber/30 rounded-lg p-3 sm:p-4">
                 <p className="text-xs font-mono-classified text-warning-amber leading-relaxed text-center">
-                  "The battlefield is no place for the unprepared. Every decision carries the weight of victory or defeat. 
+                  "The battlefield is no place for the unprepared. Every decision carries the weight of victory or defeat.
                   Choose your path wisely, soldier."
                 </p>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex gap-3 pt-4">
+              {/* Action Buttons - Mobile Optimized */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-4 sticky bottom-0 bg-gradient-to-b from-shadow-dark to-black pb-2">
                 <Button
-                  className="flex-1 bg-classified-gold hover:bg-primary text-background font-classified"
+                  className="flex-1 bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base touch-manipulation"
                   onClick={() => {
                     handleBrochureClose();
                     onOpenRegistration?.();
@@ -349,7 +349,7 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex-1 border-border/50 hover:border-classified-gold/50 font-classified"
+                  className="flex-1 border-border/50 hover:border-classified-gold/50 font-classified text-sm sm:text-base touch-manipulation"
                   onClick={handleBrochureClose}
                 >
                   ABORT MISSION
@@ -439,9 +439,9 @@ const HeroSection = () => {
       {/* Navbar */}
       <Navbar onOpenRegistration={handleRegistrationClick} />
 
-      {/* Background Image */}
+      {/* Background Image - Optimized for mobile */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
         style={{
           backgroundImage: `url(${heroBackground})`,
         }}
@@ -450,22 +450,22 @@ const HeroSection = () => {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-classified" />
 
-      {/* Classified Document Effects */}
-      <div className="absolute inset-0 texture-redacted opacity-20" />
+      {/* Classified Document Effects - Reduced on mobile */}
+      <div className="absolute inset-0 texture-redacted opacity-10 sm:opacity-20" />
 
-      {/* Subtle Shadow Elements */}
-      <div className="absolute inset-0">
+      {/* Subtle Shadow Elements - Optimized */}
+      <div className="absolute inset-0 hidden sm:block">
         <div className="absolute top-20 left-10 w-32 h-32 opacity-10 bg-shadow-dark rounded-full blur-xl" />
         <div className="absolute bottom-40 right-20 w-24 h-24 opacity-15 bg-intel-green rounded-full blur-lg" />
         <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 bg-shadow-dark rounded-full blur-md" />
       </div>
 
-      {/* Content */}
+      {/* Content - Mobile Optimized */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-16 sm:pt-20">
         <div className="animate-fade-up">
           {/* Classification Header */}
           <div className="mb-4 sm:mb-6">
-            <div className="inline-block bg-alert-red/20 border border-alert-red/50 px-3 sm:px-4 py-2 rounded-lg mb-4">
+            <div className="inline-block bg-alert-red/20 border border-alert-red/50 px-2 sm:px-3 lg:px-4 py-2 rounded-lg mb-4">
               <span className="font-mono-classified text-alert-red text-xs sm:text-sm font-bold">
                 ⚠ CLASSIFIED - WAR ZONE: ZERO HOUR ⚠
               </span>
@@ -473,12 +473,12 @@ const HeroSection = () => {
           </div>
 
           {/* Main Title - Mobile Responsive */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-classified text-classified-gold mb-2 sm:mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-classified text-classified-gold mb-2 sm:mb-4 leading-tight">
             TECHOPEDIA 14
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-intel text-document-cream mb-3 sm:mb-4 opacity-90 px-2">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-intel text-document-cream mb-3 sm:mb-4 opacity-90 px-2">
             War Zone: Zero Hour - The Final Confluence
           </p>
 
@@ -493,7 +493,7 @@ const HeroSection = () => {
           </div>
 
           {/* Decorative Line */}
-          <div className="w-24 sm:w-32 h-1 bg-classified-gold mx-auto mb-4 sm:mb-6" />
+          <div className="w-20 sm:w-24 md:w-32 h-1 bg-classified-gold mx-auto mb-4 sm:mb-6" />
 
           {/* Call to Action */}
           <div className="space-y-3">
@@ -501,7 +501,7 @@ const HeroSection = () => {
               variant="hero"
               size="lg"
               onClick={handleRegistrationClick}
-              className="bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 shadow-classified transition-all hover:scale-105"
+              className="bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 shadow-classified transition-all duration-300 hover:scale-105 touch-manipulation"
             >
               REGISTER NOW
             </Button>
@@ -513,55 +513,55 @@ const HeroSection = () => {
         </div>
 
         {/* Classification Stamps - Hidden on very small screens */}
-        <div className="absolute -top-8 -right-8 w-10 sm:w-12 h-10 sm:h-12 border-2 border-alert-red/30 rounded-full flex items-center justify-center transform rotate-12 hidden sm:flex">
+        <div className="absolute -top-8 -right-8 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 border-2 border-alert-red/30 rounded-full flex items-center justify-center transform rotate-12 hidden sm:flex">
           <span className="text-alert-red text-xs font-classified">TOP<br/>SECRET</span>
         </div>
-        <div className="absolute top-16 -left-6 w-8 sm:w-10 h-8 sm:h-10 border border-warning-amber/30 rounded flex items-center justify-center transform -rotate-12 hidden sm:flex">
+        <div className="absolute top-16 -left-6 w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 border border-warning-amber/30 rounded flex items-center justify-center transform -rotate-12 hidden sm:flex">
           <span className="text-warning-amber text-xs font-classified">EYES<br/>ONLY</span>
         </div>
       </div>
 
-      {/* Game Selection Modal */}
+      {/* Game Selection Modal - Mobile Optimized */}
       {showGameSelection && (
         <Dialog open={showGameSelection} onOpenChange={handleGameSelectionClose}>
-          <DialogContent className="max-w-4xl bg-gradient-to-b from-shadow-dark to-black border-border/50">
-            <DialogHeader>
-              <DialogTitle className="text-center font-classified text-classified-gold text-2xl">
+          <DialogContent className="max-w-[95vw] sm:max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-shadow-dark to-black border-border/50">
+            <DialogHeader className="sticky top-0 bg-gradient-to-b from-shadow-dark to-black pb-4">
+              <DialogTitle className="text-center font-classified text-classified-gold text-xl sm:text-2xl">
                 SELECT YOUR BATTLEFIELD
               </DialogTitle>
-              <p className="text-center font-intel text-muted-foreground">
+              <p className="text-center font-intel text-muted-foreground text-sm">
                 Choose your event and register for War Zone: Zero Hour
               </p>
             </DialogHeader>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6 px-2 sm:px-0">
               {games.map((game, index) => (
                 <div
                   key={index}
-                  className="group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:border-classified-gold/50 transition-all hover:scale-105 cursor-pointer"
+                  className="group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4 hover:border-classified-gold/50 transition-all duration-300 hover:scale-[1.02] cursor-pointer touch-manipulation will-change-transform"
                   onClick={() => handleGameRegistration(game.registrationLink, game.title)}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-all">
+                      <div className="p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-transform duration-300">
                         {game.icon}
                       </div>
-                      <div>
-                        <h3 className="font-classified text-lg text-foreground group-hover:text-classified-gold transition-colors">
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-classified text-base sm:text-lg text-foreground group-hover:text-classified-gold transition-colors duration-300 leading-tight">
                           {game.title}
                         </h3>
-                        <p className="text-sm font-intel text-warning-amber/80">
+                        <p className="text-xs sm:text-sm font-intel text-warning-amber/80 mt-1">
                           {game.subtitle}
                         </p>
                       </div>
                     </div>
-                    <div className={`px-2 py-1 rounded text-xs font-mono-classified ${getDifficultyColor(game.difficulty)}`}>
+                    <div className={`px-2 py-1 rounded text-xs font-mono-classified whitespace-nowrap ${getDifficultyColor(game.difficulty)}`}>
                       {game.difficulty}
                     </div>
                   </div>
-                  
+
                   <Button
-                    className="w-full bg-classified-gold hover:bg-primary text-background font-classified transition-all"
+                    className="w-full bg-classified-gold hover:bg-primary text-background font-classified transition-all duration-300 touch-manipulation"
                     size="sm"
                   >
                     REGISTER NOW
@@ -569,8 +569,8 @@ const HeroSection = () => {
                 </div>
               ))}
             </div>
-            
-            <div className="text-center mt-6">
+
+            <div className="text-center mt-4 sm:mt-6">
               <p className="text-xs font-mono-classified text-muted-foreground">
                 Security clearance required • Moral implications acknowledged
               </p>

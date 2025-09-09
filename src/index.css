@@ -202,41 +202,105 @@
     animation: timeline-pulse 2s infinite;
   }
 
-  /* Custom Component Styles */
-  .bg-gradient-hero {
-    background: var(--gradient-hero);
+  /* Performance Optimizations */
+  .will-change-transform {
+    will-change: transform;
   }
 
-  .bg-gradient-classified {
-    background: var(--gradient-classified);
+  .touch-manipulation {
+    touch-action: manipulation;
   }
 
-  .bg-gradient-intel {
-    background: var(--gradient-intel);
+  /* Mobile Performance Optimizations */
+  @media (max-width: 768px) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Enable touch for interactive elements */
+    button, a, input, textarea, select {
+      -webkit-user-select: text;
+      -khtml-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+
+    /* Reduce motion for better performance */
+    *, *::before, *::after {
+      animation-duration: 0.2s !important;
+      animation-delay: 0s !important;
+      transition-duration: 0.2s !important;
+      transition-delay: 0s !important;
+    }
+
+    /* Optimize scrolling */
+    html {
+      scroll-behavior: auto;
+    }
+
+    /* Reduce backdrop blur on mobile */
+    .backdrop-blur-sm {
+      backdrop-filter: none;
+    }
+
+    .backdrop-blur {
+      backdrop-filter: blur(2px);
+    }
+
+    /* Disable heavy effects on mobile */
+    .texture-redacted {
+      opacity: 0.05;
+    }
+
+    /* Optimize hover effects */
+    .hover\:scale-105:hover {
+      transform: scale(1.02);
+    }
+
+    .hover\:scale-\[1\.02\]:hover {
+      transform: scale(1.01);
+    }
   }
 
-  .shadow-classified {
-    box-shadow: var(--shadow-classified);
+  /* Enhanced Performance utility classes */
+  .will-change-transform {
+    will-change: transform;
   }
 
-  .shadow-intel {
-    box-shadow: var(--shadow-intel);
+  .touch-manipulation {
+    touch-action: manipulation;
   }
 
-  .shadow-redacted {
-    box-shadow: var(--shadow-redacted);
+  /* GPU acceleration for better performance */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
-  .shadow-inset {
-    box-shadow: var(--shadow-inset);
-  }
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
 
-  .transition-military {
-    transition: var(--transition-military);
-  }
-
-  .transition-combat {
-    transition: var(--transition-combat);
+    .animate-fade-up,
+    .animate-float,
+    .animate-battlefield-smoke,
+    .animate-brass-shine,
+    .animate-timeline-pulse {
+      animation: none !important;
+    }
   }
 
   /* Texture Overlays */

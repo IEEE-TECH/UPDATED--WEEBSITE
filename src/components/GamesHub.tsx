@@ -135,60 +135,60 @@ const GamesHub = () => {
           <div className="w-16 sm:w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-2 sm:mt-3" />
         </div>
 
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+        {/* Events Grid - Optimized for Mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {trinityEvents.map((event, index) => (
-            <Card 
+            <Card
               key={index}
-              className="group hover:shadow-golden transition-all duration-500 hover:scale-105 bg-card/70 backdrop-blur-sm border-border/50 overflow-hidden h-full"
+              className="group hover:shadow-golden transition-all duration-300 hover:scale-[1.02] bg-card/70 backdrop-blur-none sm:backdrop-blur-sm border-border/50 overflow-hidden h-full will-change-transform touch-manipulation"
             >
-              <CardHeader className="relative pb-2 sm:pb-3">
-                <div className="flex items-start justify-between mb-1 sm:mb-2">
-                  <div className={`p-1.5 sm:p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-all`}>
+              <CardHeader className="relative pb-3 sm:pb-4">
+                <div className="flex items-start justify-between mb-2 sm:mb-3">
+                  <div className={`p-2 sm:p-2.5 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-transform duration-300`}>
                     {event.icon}
                   </div>
-                  <Badge variant="secondary" className={`font-mono-classified text-xs ${getDifficultyColor(event.difficulty)}`}>
+                  <Badge variant="secondary" className={`font-mono-classified text-xs px-2 py-1 ${getDifficultyColor(event.difficulty)}`}>
                     {event.difficulty}
                   </Badge>
                 </div>
-                
-                <div className="mb-1 sm:mb-2">
-                  <div className="text-xs font-mono-classified text-warning-amber mb-0.5 sm:mb-1">
+
+                <div className="mb-2 sm:mb-3">
+                  <div className="text-xs font-mono-classified text-warning-amber mb-1 sm:mb-2">
                     EVENT {event.eventNumber}
                   </div>
-                  <CardTitle className="font-classified text-sm sm:text-base text-foreground group-hover:text-classified-gold transition-colors leading-tight">
+                  <CardTitle className="font-classified text-base sm:text-lg text-foreground group-hover:text-classified-gold transition-colors duration-300 leading-tight">
                     {event.title}
                   </CardTitle>
-                  <div className="text-xs sm:text-sm font-intel text-warning-amber/80 italic">
+                  <div className="text-xs sm:text-sm font-intel text-warning-amber/80 italic mt-1">
                     {event.subtitle}
                   </div>
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-2 sm:space-y-3 pt-0">
+              <CardContent className="space-y-3 sm:space-y-4 pt-0">
                 {/* Role */}
-                <div className="text-xs font-mono-classified text-muted-foreground">
-                  <span className="text-classified-gold">ROLE:</span> {event.role}
+                <div className="text-xs font-mono-classified text-muted-foreground leading-relaxed">
+                  <span className="text-classified-gold font-semibold">ROLE:</span> {event.role}
                 </div>
 
-                {/* Briefing */}
-                <div className="text-xs font-intel text-foreground/90 leading-relaxed">
+                {/* Briefing - Truncated on mobile */}
+                <div className="text-xs sm:text-sm font-intel text-foreground/90 leading-relaxed line-clamp-3">
                   "{event.briefing}"
                 </div>
 
                 {/* Status */}
-                <div className="flex items-center justify-between pt-1 sm:pt-2">
-                  <span className={`text-xs font-mono-classified ${
-                    event.status === "AVAILABLE" ? "text-classified-gold" : 
+                <div className="flex items-center justify-between pt-2">
+                  <span className={`text-xs font-mono-classified font-semibold ${
+                    event.status === "AVAILABLE" ? "text-classified-gold" :
                     event.status === "LOCKED" ? "text-alert-red" : "text-warning-amber"
                   }`}>
                     {event.status}
                   </span>
                 </div>
 
-                {/* Action Button */}
+                {/* Action Button - Optimized for touch */}
                 <Button
-                  className="w-full text-xs group-hover:bg-classified-gold group-hover:text-background transition-all cursor-pointer"
+                  className="w-full text-xs sm:text-sm group-hover:bg-classified-gold group-hover:text-background transition-all duration-300 cursor-pointer touch-manipulation"
                   variant="outline"
                   size="sm"
                   disabled={event.status === "LOCKED"}
