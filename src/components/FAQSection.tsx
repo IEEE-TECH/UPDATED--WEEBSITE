@@ -13,7 +13,7 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is War Zone: Zero Hour?",
+    question: "What is Worzone 00:00 Hour?",
     answer: "A classified evaluation system that tests logic, diplomacy, and engineering skills. You will be moved through four connected events without knowing the full picture until the final briefing.",
     category: "event"
   },
@@ -23,23 +23,33 @@ const faqData: FAQItem[] = [
     category: "registration"
   },
   {
-    question: "What are the four events?",
-    answer: "Signal Room (cryptography), Iron Route (diplomacy), Black Forge (engineering), and Convergence Briefing (moral choice). Each event builds toward the final revelation.",
+    question: "What are the five events?",
+    answer: "Inquisitive (quiz competition), Squabble (debate competition), Eureka (idea presentation), DEFUSE THE BOMB (winners-only engineering challenge), and Warlash 2.0 (ultimate showdown). Winners from the first three events advance to the elite DEFUSE THE BOMB challenge, and winners from DEFUSE THE BOMB advance to Warlash 2.0.",
+    category: "event"
+  },
+  {
+    question: "What is DEFUSE THE BOMB?",
+    answer: "A private, winners-only challenge where elite participants build a containment casing for classified cargo. Only winners from Inquisitive, Squabble, and Eureka are invited. It's not open for general registration.",
     category: "event"
   },
   {
     question: "Will I know what I'm building?",
-    answer: "No. You will work on classified components without understanding the full scope. The true nature of your work will only be revealed in the final briefing.",
+    answer: "No. In DEFUSE THE BOMB, you will build a containment casing for classified cargo without understanding the full scope. The designs embed cipher patterns and coordinates, and you'll only learn the horrifying truth in the Grand Finale.",
+    category: "event"
+  },
+  {
+    question: "What is Warlash 2.0?",
+    answer: "Warlash 2.0 is the ultimate showdown where elite warriors compete in the final arena. This is where legends are forged and destinies decided. Every battle, every victory, every defeat shapes the future of warfare itself.",
     category: "event"
   },
   {
     question: "What are the moral implications?",
-    answer: "Your actions will have consequences you cannot foresee. The final choice will determine whether you are remembered as a savior or destroyer. Choose wisely.",
+    answer: "Your actions in DEFUSE THE BOMB unknowingly build a weapon that can end the war but destroy a city. The Grand Finale presents four choices: Strike immediately, Delay, Sabotage, or Redirect. Your decision shapes Operation Trinity Veil's historical record forever.",
     category: "event"
   },
   {
     question: "Is this based on real events?",
-    answer: "War Zone: Zero Hour draws inspiration from classified wartime operations where scientists and operatives worked on projects without knowing their ultimate purpose.",
+    answer: "Worzone 00:00 Hour draws inspiration from classified wartime operations where scientists and operatives worked on projects without knowing their ultimate purpose.",
     category: "technical"
   }
 ];
@@ -64,7 +74,7 @@ const FAQSection = () => {
             CLASSIFIED BRIEFING
           </h2>
           <p className="text-base md:text-lg font-intel text-muted-foreground max-w-2xl mx-auto px-2">
-            Need-to-know basis information about War Zone: Zero Hour
+            Need-to-know basis information about Worzone 00:00 Hour
           </p>
           <div className="w-24 md:w-32 h-1 bg-classified-gold mx-auto mt-3 md:mt-4" />
         </div>

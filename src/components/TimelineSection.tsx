@@ -11,24 +11,24 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    date: "Sept 17, 2025",
-    year: 2025,
-    title: "Operation Launch",
-    description: "War Zone: Zero Hour operation officially launches. Initial briefings begin for classified personnel.",
-    category: "turning-point"
-  },
-  {
     date: "Sept 18, 2025",
     year: 2025,
-    title: "Day 1 Operations",
-    description: "First day of active War Zone: Zero Hour operations. Signal Room protocols activated.",
-    category: "battle"
+    title: "Operation Launch",
+    description: "Worzone 00:00 Hour operation officially launches. Initial briefings begin for classified personnel.",
+    category: "turning-point"
   },
   {
     date: "Sept 19, 2025",
     year: 2025,
-    title: "Registration Opens",
-    description: "Security clearance applications open for qualified personnel. Background checks initiated.",
+    title: "Day 1 Operations",
+    description: "First day of active Worzone 00:00 Hour operations. Inquisitive, Squabble, and Eureka events commence.",
+    category: "battle"
+  },
+  {
+    date: "Sept 20, 2025",
+    year: 2025,
+    title: "Grand Finale",
+    description: "DEFUSE THE BOMB winners-only challenge and Grand Finale. The ultimate decision that shapes Operation Trinity Veil's historical record.",
     category: "victory"
   }
 ];
@@ -67,7 +67,7 @@ const TimelineSection = () => {
             OPERATION TIMELINE
           </h2>
           <p className="text-base md:text-lg font-intel text-muted-foreground max-w-2xl mx-auto px-2">
-            Key dates for War Zone: Zero Hour operation deployment and personnel clearance
+            Dates: 18, 19, 20 - Key dates for Worzone 00:00 Hour operation deployment, competitions, and the Grand Finale
           </p>
           <div className="w-20 md:w-24 h-1 bg-classified-gold mx-auto mt-3 md:mt-4" />
         </div>

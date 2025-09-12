@@ -2,7 +2,6 @@ import HeroSection from "@/components/HeroSection";
 import TimelineSection from "@/components/TimelineSection";
 import GamesHub from "@/components/GamesHub";
 import TeamSection from "@/components/TeamSection";
-import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import MapSection from "@/components/MapSection";
 
@@ -13,7 +12,6 @@ const Index = () => {
       <TimelineSection />
       <GamesHub />
       <TeamSection />
-      <SponsorsSection />
       <FAQSection />
       <MapSection />
 
@@ -53,7 +51,7 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-alert-red rounded-full"></div>
                 <span className="font-mono-classified text-xs text-muted-foreground">
-                  MISSION CODE: WAR ZONE: ZERO HOUR
+                  MISSION CODE: WORZONE 00:00 HOUR
                 </span>
               </div>
             </div>

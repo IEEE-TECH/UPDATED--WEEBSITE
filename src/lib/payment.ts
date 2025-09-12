@@ -4,7 +4,9 @@ import type { PaymentData, PaymentResponse, RazorpayOptions } from '@/types/paym
 // Declare Razorpay on window object
 declare global {
   interface Window {
-    Razorpay: any;
+    Razorpay: new (options: RazorpayOptions) => {
+      open: () => void;
+    };
   }
 }
 
@@ -51,51 +53,60 @@ export const initializePayment = async (
     phone: string;
   }
 ): Promise<PaymentResponse> => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      // Load Razorpay script
-      const isLoaded = await loadRazorpayScript();
-      if (!isLoaded) {
-        throw new Error('Failed to load Razorpay script');
-      }
-
-      // Create order
-      const order = await createRazorpayOrder(paymentData.amount, paymentData.currency);
-
-      // Razorpay options
-      const options: RazorpayOptions = {
-        key: ENV.RAZORPAY_KEY_ID,
-        amount: order.amount,
-        currency: order.currency,
-        name: APP_CONFIG.name,
-        description: paymentData.description,
-        order_id: order.orderId,
-        handler: (response: PaymentResponse) => {
-          resolve(response);
-        },
-        prefill: {
-          name: userDetails.name,
-          email: userDetails.email,
-          contact: userDetails.phone
-        },
-        theme: {
-          color: PAYMENT_CONFIG.theme.color
-        },
-        modal: {
-          ondismiss: () => {
-            reject(new Error('Payment cancelled by user'));
-          }
-        }
-      };
-
-      // Open Razorpay checkout
-      const razorpay = new window.Razorpay(options);
-      razorpay.open();
-
-    } catch (error) {
-      reject(error);
+  try {
+    // Load Razorpay script
+    const isLoaded = await loadRazorpayScript();
+    if (!isLoaded) {
+      throw new Error('Failed to load Razorpay script');
     }
-  });
+
+    // Create order
+    const order = await createRazorpayOrder(paymentData.amount, paymentData.currency);
+
+    // Razorpay options
+    const options: RazorpayOptions = {
+      key: ENV.RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: APP_CONFIG.name,
+      description: paymentData.description,
+      order_id: order.orderId,
+      handler: (response: PaymentResponse) => {
+        // Resolve the promise when payment is successful
+        return Promise.resolve(response);
+      },
+      prefill: {
+        name: userDetails.name,
+        email: userDetails.email,
+        contact: userDetails.phone
+      },
+      theme: {
+        color: PAYMENT_CONFIG.theme.color
+      },
+      modal: {
+        ondismiss: () => {
+          throw new Error('Payment cancelled by user');
+        }
+      }
+    };
+
+    // Open Razorpay checkout
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+
+    // Return a promise that resolves when payment is completed
+    return new Promise((resolve, reject) => {
+      options.handler = (response: PaymentResponse) => {
+        resolve(response);
+      };
+      options.modal.ondismiss = () => {
+        reject(new Error('Payment cancelled by user'));
+      };
+    });
+
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Verify payment signature (server-side verification recommended)

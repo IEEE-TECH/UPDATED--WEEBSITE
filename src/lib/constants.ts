@@ -80,12 +80,16 @@ export const getRegistrationStatus = (): string => {
 
 // Environment variables with defaults
 export const ENV = {
-  APP_ENV: import.meta.env.MODE || 'development'
+  APP_ENV: import.meta.env.MODE || 'development',
+  RAZORPAY_KEY_ID: import.meta.env.VITE_RAZORPAY_KEY_ID || 'your_razorpay_key_id'
 };
 
-// Validate environment variables  
-export const validateEnv = (): boolean => {
-  // No required environment variables for frontend-only mode
-  console.log('Frontend-only mode - no environment validation required');
-  return true;
+// Payment configuration
+export const PAYMENT_CONFIG = {
+  theme: {
+    color: '#1a365d' // Navy blue to match the theme
+  },
+  currency: 'INR',
+  minAmount: 100, // Minimum payment amount in rupees
+  maxAmount: 10000 // Maximum payment amount in rupees
 };

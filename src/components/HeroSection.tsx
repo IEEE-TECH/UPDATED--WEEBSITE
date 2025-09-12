@@ -44,9 +44,6 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
             <a href="#team" className="font-classified text-foreground hover:text-classified-gold transition-colors">
               TEAM
             </a>
-            <a href="#sponsors" className="font-classified text-foreground hover:text-classified-gold transition-colors">
-              SPONSORS
-            </a>
             <a href="#briefing" className="font-classified text-foreground hover:text-classified-gold transition-colors">
               BRIEFING
             </a>
@@ -98,13 +95,6 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                 className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
               >
                 TEAM
-              </a>
-              <a
-                href="#sponsors"
-                onClick={closeMobileMenu}
-                className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
-              >
-                SPONSORS
               </a>
               <a
                 href="#briefing"
@@ -162,9 +152,6 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
               <a href="#team" className="font-classified text-foreground hover:text-classified-gold transition-colors">
                 TEAM
               </a>
-              <a href="#sponsors" className="font-classified text-foreground hover:text-classified-gold transition-colors">
-                SPONSORS
-              </a>
               <a href="#briefing" className="font-classified text-foreground hover:text-classified-gold transition-colors">
                 BRIEFING
               </a>
@@ -218,13 +205,6 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                   TEAM
                 </a>
                 <a
-                  href="#sponsors"
-                  onClick={closeMobileMenu}
-                  className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
-                >
-                  SPONSORS
-                </a>
-                <a
                   href="#briefing"
                   onClick={closeMobileMenu}
                   className="font-classified text-foreground hover:text-classified-gold transition-colors py-2 px-2 rounded hover:bg-muted/50"
@@ -268,7 +248,7 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                 <span className="text-lg sm:text-xl">CLASSIFIED BROCHURE</span>
               </DialogTitle>
               <p className="text-center font-intel text-muted-foreground text-sm">
-                War Zone: Zero Hour - Operation Briefing
+                Worzone 00:00 Hour - Operation Briefing
               </p>
             </DialogHeader>
 
@@ -282,7 +262,7 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                       ⚠ SECURITY CLEARANCE REQUIRED
                     </h3>
                     <p className="text-xs font-mono-classified text-muted-foreground leading-relaxed">
-                      This document contains classified information about War Zone: Zero Hour operations.
+                      This document contains classified information about Worzone 00:00 Hour operations.
                       Unauthorized access is prohibited and may result in immediate security protocol activation.
                     </p>
                   </div>
@@ -296,7 +276,7 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                     OPERATION OVERVIEW
                   </h4>
                   <div className="space-y-2 text-sm font-intel text-foreground/90">
-                    <p><span className="text-classified-gold font-semibold">Code Name:</span> War Zone: Zero Hour</p>
+                    <p><span className="text-classified-gold font-semibold">Code Name:</span> Worzone 00:00 Hour</p>
                     <p><span className="text-classified-gold font-semibold">Classification:</span> TOP SECRET</p>
                     <p><span className="text-classified-gold font-semibold">Duration:</span> 48 Hours of Intense Combat</p>
                     <p><span className="text-classified-gold font-semibold">Participants:</span> Elite Gaming Forces</p>
@@ -320,8 +300,12 @@ const Navbar = ({ onOpenRegistration }: { onOpenRegistration?: () => void }) => 
                       <Wrench className="h-4 w-4 text-alert-red flex-shrink-0" />
                       <span className="text-xs sm:text-sm font-intel">Eureka - Innovation Battleground</span>
                     </div>
-                    <div className="flex items-center gap-3 p-2 bg-document-cream/10 rounded">
+                    <div className="flex items-center gap-3 p-2 bg-document-cream/10 rounded opacity-60">
                       <Users className="h-4 w-4 text-document-cream flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-intel">DEFUSE THE BOMB - Winners Only</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-2 bg-classified-gold/10 rounded">
+                      <Users className="h-4 w-4 text-classified-gold flex-shrink-0" />
                       <span className="text-xs sm:text-sm font-intel">Warlash 2.0 - Ultimate Showdown</span>
                     </div>
                   </div>
@@ -416,6 +400,13 @@ const HeroSection = () => {
       registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfuTOondyINY9quRJnDdhmMU3ueHWzIOcYiQnnVq6BaDe2-kw/viewform?usp=header"
     },
     {
+      title: "DEFUSE THE BOMB",
+      subtitle: "WINNERS-ONLY CHALLENGE",
+      icon: <Users className="h-6 w-6" />,
+      difficulty: "ULTRA",
+      registrationLink: null
+    },
+    {
       title: "Warlash 2.0",
       subtitle: "ULTIMATE SHOWDOWN",
       icon: <Users className="h-6 w-6" />,
@@ -467,7 +458,7 @@ const HeroSection = () => {
           <div className="mb-4 sm:mb-6">
             <div className="inline-block bg-alert-red/20 border border-alert-red/50 px-2 sm:px-3 lg:px-4 py-2 rounded-lg mb-4">
               <span className="font-mono-classified text-alert-red text-xs sm:text-sm font-bold">
-                ⚠ CLASSIFIED - WAR ZONE: ZERO HOUR ⚠
+                ⚠ CLASSIFIED - WORZONE 00:00 HOUR ⚠
               </span>
             </div>
           </div>
@@ -479,7 +470,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-intel text-document-cream mb-3 sm:mb-4 opacity-90 px-2">
-            War Zone: Zero Hour - The Final Confluence
+            Worzone 00:00 Hour - The Final Confluence
           </p>
 
           {/* Moral Warning */}
@@ -496,27 +487,27 @@ const HeroSection = () => {
           <div className="w-20 sm:w-24 md:w-32 h-1 bg-classified-gold mx-auto mb-4 sm:mb-6" />
 
           {/* Call to Action */}
-          <div className="space-y-3">
+          <div className="flex flex-col items-center justify-center space-y-4 mt-6 sm:mt-8">
             <Button
               variant="hero"
               size="lg"
               onClick={handleRegistrationClick}
-              className="bg-classified-gold hover:bg-primary text-background font-classified text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 shadow-classified transition-all hover:scale-105"
+              className="bg-classified-gold hover:bg-primary text-background font-classified text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-classified transition-all hover:scale-105 hover:shadow-golden duration-300 min-w-[200px] sm:min-w-[240px]"
             >
               REGISTER NOW
             </Button>
 
-            <p className="text-xs sm:text-sm font-mono-classified text-muted-foreground opacity-75 px-2">
+            <p className="text-xs sm:text-sm font-mono-classified text-muted-foreground opacity-75 text-center max-w-md">
               Security clearance required • Moral implications acknowledged
             </p>
           </div>
         </div>
 
-        {/* Classification Stamps - Hidden on very small screens */}
-        <div className="absolute -top-8 -right-8 w-10 sm:w-12 h-10 sm:h-12 border-2 border-alert-red/30 rounded-full flex items-center justify-center transform rotate-12 hidden sm:flex">
+        {/* Classification Stamps */}
+        <div className="absolute -top-8 -right-8 w-10 sm:w-12 h-10 sm:h-12 border-2 border-alert-red/30 rounded-full flex items-center justify-center transform rotate-12">
           <span className="text-alert-red text-xs font-classified">TOP<br/>SECRET</span>
         </div>
-        <div className="absolute top-16 -left-6 w-8 sm:w-10 h-8 sm:h-10 border border-warning-amber/30 rounded flex items-center justify-center transform -rotate-12 hidden sm:flex">
+        <div className="absolute top-16 -left-6 w-8 sm:w-10 h-8 sm:h-10 border border-warning-amber/30 rounded flex items-center justify-center transform -rotate-12">
           <span className="text-warning-amber text-xs font-classified">EYES<br/>ONLY</span>
         </div>
       </div>
@@ -530,44 +521,110 @@ const HeroSection = () => {
                 SELECT YOUR BATTLEFIELD
               </DialogTitle>
               <p className="text-center font-intel text-muted-foreground text-sm">
-                Choose your event and register for War Zone: Zero Hour
+                Choose your event and register for Worzone 00:00 Hour
               </p>
             </DialogHeader>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6 px-2 sm:px-0">
-              {games.map((game, index) => (
-                <div
-                  key={index}
-                  className="group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4 hover:border-classified-gold/50 transition-all duration-300 hover:scale-[1.02] cursor-pointer"
-                  onClick={() => handleGameRegistration(game.registrationLink, game.title)}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-transform duration-300">
-                        {game.icon}
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="font-classified text-base sm:text-lg text-foreground group-hover:text-classified-gold transition-colors duration-300 leading-tight">
-                          {game.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm font-intel text-warning-amber/80 mt-1">
-                          {game.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                    <div className={`px-2 py-1 rounded text-xs font-mono-classified whitespace-nowrap ${getDifficultyColor(game.difficulty)}`}>
-                      {game.difficulty}
-                    </div>
-                  </div>
-
-                  <Button
-                    className="w-full bg-classified-gold hover:bg-primary text-background font-classified transition-all duration-300"
-                    size="sm"
+            <div className="flex flex-col gap-4 sm:gap-6 mt-4 sm:mt-6 px-2 sm:px-0">
+              {/* First Row - 3 Games */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+                {games.slice(0, 3).map((game, index) => (
+                  <div
+                    key={index}
+                    className={`group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4 hover:border-classified-gold/50 transition-all duration-300 hover:scale-[1.02] ${
+                      game.registrationLink ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'
+                    }`}
+                    onClick={() => game.registrationLink && handleGameRegistration(game.registrationLink, game.title)}
                   >
-                    REGISTER NOW
-                  </Button>
-                </div>
-              ))}
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-transform duration-300 ${
+                          !game.registrationLink ? 'opacity-50' : ''
+                        }`}>
+                          {game.icon}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h3 className={`font-classified text-base sm:text-lg text-foreground group-hover:text-classified-gold transition-colors duration-300 leading-tight ${
+                            !game.registrationLink ? 'text-muted-foreground' : ''
+                          }`}>
+                            {game.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm font-intel text-warning-amber/80 mt-1">
+                            {game.subtitle}
+                          </p>
+                        </div>
+                      </div>
+                      <div className={`px-2 py-1 rounded text-xs font-mono-classified whitespace-nowrap ${getDifficultyColor(game.difficulty)} ${
+                        !game.registrationLink ? 'opacity-50' : ''
+                      }`}>
+                        {game.difficulty}
+                      </div>
+                    </div>
+
+                    <Button
+                      className={`w-full font-classified transition-all duration-300 ${
+                        game.registrationLink
+                          ? 'bg-classified-gold hover:bg-primary text-background'
+                          : 'bg-muted text-muted-foreground cursor-not-allowed'
+                      }`}
+                      size="sm"
+                      disabled={!game.registrationLink}
+                    >
+                      {game.registrationLink ? 'REGISTER NOW' : 'WINNERS ONLY'}
+                    </Button>
+                  </div>
+                ))}
+              </div>
+
+              {/* Second Row - 2 Games */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto w-full">
+                {games.slice(3, 5).map((game, index) => (
+                  <div
+                    key={index + 3}
+                    className={`group bg-card/70 backdrop-blur-sm border border-border/50 rounded-lg p-3 sm:p-4 hover:border-classified-gold/50 transition-all duration-300 hover:scale-[1.02] ${
+                      game.registrationLink ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'
+                    }`}
+                    onClick={() => game.registrationLink && handleGameRegistration(game.registrationLink, game.title)}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2 rounded-lg bg-classified-gold/20 text-classified-gold group-hover:scale-110 transition-transform duration-300 ${
+                          !game.registrationLink ? 'opacity-50' : ''
+                        }`}>
+                          {game.icon}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h3 className={`font-classified text-base sm:text-lg text-foreground group-hover:text-classified-gold transition-colors duration-300 leading-tight ${
+                            !game.registrationLink ? 'text-muted-foreground' : ''
+                          }`}>
+                            {game.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm font-intel text-warning-amber/80 mt-1">
+                            {game.subtitle}
+                          </p>
+                        </div>
+                      </div>
+                      <div className={`px-2 py-1 rounded text-xs font-mono-classified whitespace-nowrap ${getDifficultyColor(game.difficulty)} ${
+                        !game.registrationLink ? 'opacity-50' : ''
+                      }`}>
+                        {game.difficulty}
+                      </div>
+                    </div>
+
+                    <Button
+                      className={`w-full font-classified transition-all duration-300 ${
+                        game.registrationLink
+                          ? 'bg-classified-gold hover:bg-primary text-background'
+                          : 'bg-muted text-muted-foreground cursor-not-allowed'
+                      }`}
+                      size="sm"
+                      disabled={!game.registrationLink}
+                    >
+                      {game.registrationLink ? 'REGISTER NOW' : 'WINNERS ONLY'}
+                    </Button>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="text-center mt-4 sm:mt-6">
