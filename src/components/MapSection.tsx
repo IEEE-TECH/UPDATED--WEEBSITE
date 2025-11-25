@@ -8,6 +8,7 @@ const MapSection = () => {
     subject: '',
     message: ''
   });
+  const [mapError, setMapError] = useState(false);
 
   const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -50,21 +51,97 @@ const MapSection = () => {
                 </h3>
               </div>
               <div className="relative h-80 md:h-96">
-                {/* Google Maps Embed */}
-                <iframe
-                  src={`https://www.google.com/maps/embed/v1/place?key=${googleMapsApiKey}&q=19.0428,73.0233&zoom=15`}
-                  className="w-full h-full border-0"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="SIES GST Location"
-                />
-                {/* Classified Overlay */}
+                {/* Google Maps Embed or Classified Fallback */}
+                {googleMapsApiKey && !mapError ? (
+                  <iframe
+                    src={`https://www.google.com/maps/embed/v1/place?key=${googleMapsApiKey}&q=19.0428,73.0233&zoom=15`}
+                    className="w-full h-full border-0"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="SIES GST Location"
+                    onError={() => setMapError(true)}
+                  />
+                ) : (
+                  /* Classified Military Map Fallback */
+                  <div className="w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-classified-gold/30 relative overflow-hidden">
+                    {/* Grid Pattern Background */}
+                    <div className="absolute inset-0 opacity-20">
+                      <svg className="w-full h-full" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255, 215, 0, 0.3)" strokeWidth="0.5"/>
+                          </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+                      </svg>
+                    </div>
+
+                    {/* Topographic Lines */}
+                    <div className="absolute inset-0">
+                      <svg className="w-full h-full" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50,150 Q100,120 150,140 T250,130 Q300,110 350,130"
+                              fill="none" stroke="rgba(255, 215, 0, 0.2)" strokeWidth="1"/>
+                        <path d="M30,180 Q80,160 130,170 T230,165 Q280,150 330,165"
+                              fill="none" stroke="rgba(255, 215, 0, 0.15)" strokeWidth="1"/>
+                        <path d="M70,200 Q120,185 170,195 T270,190 Q320,180 370,190"
+                              fill="none" stroke="rgba(255, 215, 0, 0.1)" strokeWidth="1"/>
+                      </svg>
+                    </div>
+
+                    {/* Target Location Marker */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <div className="relative">
+                        {/* Outer Ring */}
+                        <div className="w-16 h-16 border-2 border-classified-gold rounded-full animate-pulse"></div>
+                        {/* Inner Ring */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-classified-gold rounded-full"></div>
+                        {/* Center Dot */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-alert-red rounded-full animate-pulse"></div>
+                      </div>
+                    </div>
+
+                    {/* Classified Text Overlay */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="bg-black/80 backdrop-blur-sm border border-classified-gold/30 rounded px-3 py-2">
+                        <div className="text-xs font-mono-classified text-classified-gold text-center">
+                          CLASSIFIED: STRATEGIC COORDINATES
+                        </div>
+                        <div className="text-xs font-mono-classified text-warning-amber/80 text-center mt-1">
+                          NAVI MUMBAI SECTOR - MISSION READY
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Corner Security Badges */}
+                    <div className="absolute top-2 right-2">
+                      <div className="bg-alert-red/20 border border-alert-red/50 rounded px-2 py-1">
+                        <span className="text-xs font-mono-classified text-alert-red">TOP SECRET</span>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-2 left-2">
+                      <div className="bg-classified-gold/20 border border-classified-gold/50 rounded px-2 py-1">
+                        <span className="text-xs font-mono-classified text-classified-gold">AUTHORIZED</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Classified Overlay - Always visible */}
                 <div className="absolute top-2 left-2 bg-black/80 backdrop-blur-sm px-3 py-1 rounded border border-classified-gold/30">
                   <span className="text-xs font-mono-classified text-classified-gold">
                     COORDS: 19.0428°N, 73.0233°E
                   </span>
                 </div>
+
+                {/* API Key Status Indicator */}
+                {(!googleMapsApiKey || mapError) && (
+                  <div className="absolute top-2 right-2 bg-alert-red/20 backdrop-blur-sm px-2 py-1 rounded border border-alert-red/50">
+                    <span className="text-xs font-mono-classified text-alert-red">
+                      {mapError ? 'MAP ERROR' : 'API KEY MISSING'}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 
