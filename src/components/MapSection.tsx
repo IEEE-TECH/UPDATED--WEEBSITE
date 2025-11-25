@@ -9,6 +9,8 @@ const MapSection = () => {
     message: ''
   });
 
+  const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -50,7 +52,7 @@ const MapSection = () => {
               <div className="relative h-80 md:h-96">
                 {/* Google Maps Embed */}
                 <iframe
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD2t6bQkQa9uc-ePInTi_0c4L8_yrv6ofc&q=19.0428,73.0233&zoom=15`}
+                  src={`https://www.google.com/maps/embed/v1/place?key=${googleMapsApiKey}&q=19.0428,73.0233&zoom=15`}
                   className="w-full h-full border-0"
                   allowFullScreen
                   loading="lazy"
